@@ -1,5 +1,6 @@
 package com.example.closetstack
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -20,7 +21,7 @@ class HomeActivity : AppCompatActivity() {
     private fun setupPostsFeed() {
         val posts = listOf(
             Post(
-                username = "Justin Nabuniuan",
+                username = "Justin Nabunturan",
                 description = "Lakers in game 2",
                 caption = "Average Rating: 4.5",
                 imageRes = R.drawable.img_post1,
@@ -91,8 +92,10 @@ class HomeActivity : AppCompatActivity() {
                 when (item.itemId) {
                     R.id.nav_home -> true
                     R.id.nav_closet -> {
-                        Toast.makeText(this, "Closet screen coming soon!", Toast.LENGTH_SHORT).show()
-                        false
+                        startActivity(Intent(this, ClosetActivity::class.java))
+                        overridePendingTransition(0, 0)
+                        finish()
+                        true
                     }
                     R.id.nav_outfits -> {
                         Toast.makeText(this, "Outfits screen coming soon!", Toast.LENGTH_SHORT).show()

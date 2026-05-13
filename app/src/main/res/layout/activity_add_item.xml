@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_navy"
+    tools:context=".AddItemActivity">
+
+    <!-- Top Bar -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/dark_navy"
+        app:elevation="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
+            <!-- Back Arrow -->
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/ic_arrow_back"
+                app:tint="#FFFFFF"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <!-- Title -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="add an item"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/ivBack"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginStart="12dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Scrollable Content -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="100dp"
+        android:clipToPadding="false"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="12dp">
+
+            <!-- Photo Upload Area -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardPhotoUpload"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="#1E1E1E"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <!-- Camera Icon -->
+                    <ImageView
+                        android:id="@+id/ivPhotoPreview"
+                        android:layout_width="52dp"
+                        android:layout_height="52dp"
+                        android:src="@drawable/ic_camera_placeholder"
+                        app:tint="#888888" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="snap it, or link it"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="take a photo, upload from gallery,\nor paste a product link"
+                        android:textColor="#888888"
+                        android:textSize="11sp"
+                        android:gravity="center" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Camera / Gallery Buttons -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCamera"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:text="Camera"
+                    android:textSize="13sp"
+                    android:textColor="#FFFFFF"
+                    app:backgroundTint="#2A2A2A"
+                    app:cornerRadius="10dp"
+                    app:icon="@drawable/ic_camera_placeholder"
+                    app:iconTint="#FFFFFF"
+                    app:iconSize="16dp"
+                    app:iconPadding="6dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnGallery"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_weight="1"
+                    android:text="Gallery"
+                    android:textSize="13sp"
+                    android:textColor="#FFFFFF"
+                    app:backgroundTint="#2A2A2A"
+                    app:cornerRadius="10dp"
+                    app:icon="@drawable/ic_gallery"
+                    app:iconTint="#FFFFFF"
+                    app:iconSize="16dp"
+                    app:iconPadding="6dp" />
+
+            </LinearLayout>
+
+            <!-- Category -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="category"
+                android:textColor="#AAAAAA"
+                android:textSize="12sp"
+                android:layout_marginBottom="6dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/spinnerCategory"
+                    android:layout_width="0dp"
+                    android:layout_height="46dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_input_dark"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp" />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/spinnerSubcategory"
+                    android:layout_width="0dp"
+                    android:layout_height="46dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_input_dark"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp" />
+
+            </LinearLayout>
+
+            <!-- Brand -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="brand"
+                android:textColor="#AAAAAA"
+                android:textSize="12sp"
+                android:layout_marginBottom="6dp" />
+
+            <EditText
+                android:id="@+id/etBrand"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_input_dark"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:hint="e.g. BENCH, Uniqlo"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#555555"
+                android:textSize="13sp"
+                android:inputType="text" />
+
+            <!-- Tags -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="tags"
+                android:textColor="#AAAAAA"
+                android:textSize="12sp"
+                android:layout_marginBottom="6dp" />
+
+            <EditText
+                android:id="@+id/etTags"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginBottom="6dp"
+                android:background="@drawable/bg_input_dark"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:hint="e.g. casual, streetwear"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#555555"
+                android:textSize="13sp"
+                android:inputType="text" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="separate tags with a comma"
+                android:textColor="#555555"
+                android:textSize="10sp"
+                android:layout_marginBottom="20dp" />
+
+            <!-- Color -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="color"
+                android:textColor="#AAAAAA"
+                android:textSize="12sp"
+                android:layout_marginBottom="10dp" />
+
+            <!-- Color Swatches Row 1 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp">
+
+                <View android:id="@+id/colorRed"
+                    android:layout_width="32dp" android:layout_height="32dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_color_swatch"
+                    android:backgroundTint="#E53935" />
+                <View android:id="@+id/colorOrange"
+                    android:layout_width="32dp" android:layout_height="32dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_color_swatch"
+                    android:backgroundTint="#FB8C00" />
+                <View android:id="@+id/colorYellow"
+                    android:layout_width="32dp" android:layout_height="32dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_color_swatch"
+                    android:backgroundTint="#FDD835" />
+                <View android:id="@+id/colorGreen"
+                    android:layout_width="32dp" android:layout_height="32dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_color_swatch"
+                    android:backgroundTint="#43A047" />
+                <View android:id="@+id/colorBlue"
+                    android:layout_width="32dp" android:layout_height="32dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_color_swatch"
+                    android:backgroundTint="#1E88E5" />
+                <View android:id="@+id/colorPurple"
+                    android:layout_width="32dp" android:layout_height="32dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_color_swatch"
+                    android:backgroundTint="#8E24AA" />
+                <View android:id="@+id/colorPink"
+                    android:layout_width="32dp" android:layout_height="32dp"
+                    android:background="@drawable/bg_color_swatch"
+                    android:backgroundTint="#D81B60" />
+
+            </LinearLayout>
+
+            <!-- Color Swatches Row 2 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp">
+
+                <View android:id="@+id/colorBrown"
+                    android:layout_width="32dp" android:layout_height="32dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_color_swatch"
+                    android:backgroundTint="#6D4C41" />
+                <View android:id="@+id/colorBeige"
+                    android:layout_width="32dp" android:layout_height="32dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_color_swatch"
+                    android:backgroundTint="#D7CCC8" />
+                <View android:id="@+id/colorGray"
+                    android:layout_width="32dp" android:layout_height="32dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_color_swatch"
+                    android:backgroundTint="#757575" />
+                <View android:id="@+id/colorBlack"
+                    android:layout_width="32dp" android:layout_height="32dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_color_swatch"
+                    android:backgroundTint="#212121" />
+                <View android:id="@+id/colorWhite"
+                    android:layout_width="32dp" android:layout_height="32dp"
+                    android:background="@drawable/bg_color_swatch_outline"
+                    android:backgroundTint="#FFFFFF" />
+
+            </LinearLayout>
+
+            <!-- Size -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="size"
+                android:textColor="#AAAAAA"
+                android:textSize="12sp"
+                android:layout_marginBottom="10dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp">
+
+                <TextView android:id="@+id/sizeXS"
+                    android:layout_width="0dp" android:layout_height="36dp"
+                    android:layout_weight="1" android:layout_marginEnd="6dp"
+                    android:gravity="center" android:text="XS"
+                    android:textColor="#AAAAAA" android:textSize="12sp"
+                    android:background="@drawable/bg_category_unselected" />
+                <TextView android:id="@+id/sizeS"
+                    android:layout_width="0dp" android:layout_height="36dp"
+                    android:layout_weight="1" android:layout_marginEnd="6dp"
+                    android:gravity="center" android:text="S"
+                    android:textColor="#AAAAAA" android:textSize="12sp"
+                    android:background="@drawable/bg_category_unselected" />
+                <TextView android:id="@+id/sizeM"
+                    android:layout_width="0dp" android:layout_height="36dp"
+                    android:layout_weight="1" android:layout_marginEnd="6dp"
+                    android:gravity="center" android:text="M"
+                    android:textColor="#FFFFFF" android:textSize="12sp"
+                    android:background="@drawable/bg_size_selected" />
+                <TextView android:id="@+id/sizeL"
+                    android:layout_width="0dp" android:layout_height="36dp"
+                    android:layout_weight="1" android:layout_marginEnd="6dp"
+                    android:gravity="center" android:text="L"
+                    android:textColor="#AAAAAA" android:textSize="12sp"
+                    android:background="@drawable/bg_category_unselected" />
+                <TextView android:id="@+id/sizeXL"
+                    android:layout_width="0dp" android:layout_height="36dp"
+                    android:layout_weight="1"
+                    android:gravity="center" android:text="XL"
+                    android:textColor="#AAAAAA" android:textSize="12sp"
+                    android:background="@drawable/bg_category_unselected" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="28dp">
+
+                <TextView android:id="@+id/sizeXXL"
+                    android:layout_width="0dp" android:layout_height="36dp"
+                    android:layout_weight="1" android:layout_marginEnd="6dp"
+                    android:gravity="center" android:text="XXL"
+                    android:textColor="#AAAAAA" android:textSize="12sp"
+                    android:background="@drawable/bg_category_unselected" />
+                <TextView android:id="@+id/sizeFreeSize"
+                    android:layout_width="0dp" android:layout_height="36dp"
+                    android:layout_weight="2" android:layout_marginEnd="6dp"
+                    android:gravity="center" android:text="Free Size"
+                    android:textColor="#AAAAAA" android:textSize="12sp"
+                    android:background="@drawable/bg_category_unselected" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="36dp"
+                    android:layout_weight="2" />
+
+            </LinearLayout>
+
+            <!-- Save Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSaveItem"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="16dp"
+                android:text="Save to Closet"
+                android:textColor="#121212"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:backgroundTint="#FFFFFF"
+                app:cornerRadius="12dp" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Bottom Navigation Bar -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_gravity="bottom"
+        android:background="@color/dark_navy"
+        app:itemIconTint="@drawable/nav_item_color"
+        app:itemTextColor="@drawable/nav_item_color"
+        app:labelVisibilityMode="unlabeled"
+        app:itemIconSize="28dp"
+        app:menu="@menu/bottom_nav_menu" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
