@@ -21,17 +21,14 @@ class LoginActivity : AppCompatActivity() {
             insets
         }
 
-        // Login button - to be implemented
         findViewById<MaterialButton>(R.id.btnLogin).setOnClickListener {
             Toast.makeText(this, "Login will be implemented soon!", Toast.LENGTH_SHORT).show()
         }
 
-        // Sign up link - navigate to RegisterActivity
         findViewById<TextView>(R.id.tvSignUp).setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
 
-        // Forgot password - to be implemented
         findViewById<TextView>(R.id.tvForgotPassword).setOnClickListener {
             Toast.makeText(this, "Forgot Password will be implemented soon!", Toast.LENGTH_SHORT).show()
         }
