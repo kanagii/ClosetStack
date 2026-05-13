@@ -22,7 +22,7 @@ class HomeActivity : AppCompatActivity() {
             Post(
                 username = "Justin Nabuniuan",
                 description = "Lakers in game 2",
-                caption = "Autumn Layering 2025",
+                caption = "Average Rating: 4.5",
                 imageRes = R.drawable.img_post1,
                 avatarRes = R.drawable.img_user1,
                 timestamp = "2h ago"
@@ -30,7 +30,7 @@ class HomeActivity : AppCompatActivity() {
             Post(
                 username = "Jerome Batumbakal",
                 description = "Street core fits only",
-                caption = "Street Ready",
+                caption = "Average Rating: 4.8",
                 imageRes = R.drawable.img_post2,
                 avatarRes = R.drawable.img_user2,
                 timestamp = "4h ago"
@@ -38,33 +38,33 @@ class HomeActivity : AppCompatActivity() {
             Post(
                 username = "Adam Marc",
                 description = "Minimalist Monday",
-                caption = "Less is More",
+                caption = "Average Rating: 4.4",
                 imageRes = R.drawable.img_post3,
-                avatarRes = R.drawable.img_user3,
+                avatarRes = R.drawable.img_user4,
                 timestamp = "6h ago"
             ),
             Post(
-                username = "KyleRoss",
+                username = "Onse Fernandez",
                 description = "Vintage thrift haul 🧥",
-                caption = "Thrift King",
+                caption = "Average Rating: 4.9",
                 imageRes = R.drawable.img_post4,
-                avatarRes = R.drawable.img_user4,
+                avatarRes = R.drawable.img_user3,
                 timestamp = "8h ago"
             ),
             Post(
-                username = "shoppingg",
-                description = "New season, new me 🍂",
-                caption = "Fall Fits 2025",
+                username = "bipoygaming",
+                description = "kinsa nakakita ani bayhana tawage ko salamt",
+                caption = "Average Rating: 4.2",
                 imageRes = R.drawable.img_post5,
-                avatarRes = R.drawable.img_user5,
+                avatarRes = R.drawable.usertop2,
                 timestamp = "10h ago"
             ),
             Post(
-                username = "DropfitBCS",
-                description = "Drip or drown 💧",
-                caption = "Full Send Fit",
+                username = "strt_apoy",
+                description = "jacket ta gamay bisag init pilipinas",
+                caption = "Average Rating: 4.8",
                 imageRes = R.drawable.img_post6,
-                avatarRes = R.drawable.img_user6,
+                avatarRes = R.drawable.usertop1,
                 timestamp = "12h ago"
             )
         )
