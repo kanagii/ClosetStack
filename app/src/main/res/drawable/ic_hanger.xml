@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+
+    <!-- Hook curve -->
+    <path
+        android:pathData="M50,10 C50,10 68,10 68,25 C68,40 50,40 50,40"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="6"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000" />
+
+    <!-- Neck -->
+    <path
+        android:pathData="M50,40 L50,55"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="6"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000" />
+
+    <!-- Left shoulder -->
+    <path
+        android:pathData="M50,55 Q15,68 5,82"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="6"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000" />
+
+    <!-- Right shoulder -->
+    <path
+        android:pathData="M50,55 Q85,68 95,82"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="6"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000" />
+
+    <!-- Bottom bar -->
+    <path
+        android:pathData="M5,82 L95,82"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="6"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000" />
+
+</vector>

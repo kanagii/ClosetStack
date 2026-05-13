@@ -23,6 +23,8 @@ class LoginActivity : AppCompatActivity() {
 
         findViewById<MaterialButton>(R.id.btnLogin).setOnClickListener {
             Toast.makeText(this, "Login will be implemented soon!", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, HomeActivity::class.java))
+            finish()
         }
 
         findViewById<TextView>(R.id.tvSignUp).setOnClickListener {
