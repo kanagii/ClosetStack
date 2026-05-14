@@ -257,74 +257,91 @@
                 android:orientation="horizontal"
                 android:layout_marginBottom="8dp">
 
-                <View android:id="@+id/colorRed"
-                    android:layout_width="32dp" android:layout_height="32dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_color_swatch"
-                    android:backgroundTint="#E53935" />
-                <View android:id="@+id/colorOrange"
-                    android:layout_width="32dp" android:layout_height="32dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_color_swatch"
-                    android:backgroundTint="#FB8C00" />
-                <View android:id="@+id/colorYellow"
-                    android:layout_width="32dp" android:layout_height="32dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_color_swatch"
-                    android:backgroundTint="#FDD835" />
-                <View android:id="@+id/colorGreen"
-                    android:layout_width="32dp" android:layout_height="32dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_color_swatch"
-                    android:backgroundTint="#43A047" />
-                <View android:id="@+id/colorBlue"
-                    android:layout_width="32dp" android:layout_height="32dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_color_swatch"
-                    android:backgroundTint="#1E88E5" />
-                <View android:id="@+id/colorPurple"
-                    android:layout_width="32dp" android:layout_height="32dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_color_swatch"
-                    android:backgroundTint="#8E24AA" />
-                <View android:id="@+id/colorPink"
-                    android:layout_width="32dp" android:layout_height="32dp"
-                    android:background="@drawable/bg_color_swatch"
-                    android:backgroundTint="#D81B60" />
+                <!-- Each swatch: FrameLayout with color circle + ring overlay -->
+                <FrameLayout android:layout_width="36dp" android:layout_height="36dp" android:layout_marginEnd="8dp">
+                    <View android:id="@+id/colorRed" android:layout_width="28dp" android:layout_height="28dp" android:layout_gravity="center" android:background="@drawable/bg_color_swatch" android:backgroundTint="#E53935" />
+                    <View android:id="@+id/ringRed" android:layout_width="36dp" android:layout_height="36dp" android:background="@drawable/bg_color_swatch_ring" android:visibility="gone" />
+                </FrameLayout>
+
+                <FrameLayout android:layout_width="36dp" android:layout_height="36dp" android:layout_marginEnd="8dp">
+                    <View android:id="@+id/colorOrange" android:layout_width="28dp" android:layout_height="28dp" android:layout_gravity="center" android:background="@drawable/bg_color_swatch" android:backgroundTint="#FB8C00" />
+                    <View android:id="@+id/ringOrange" android:layout_width="36dp" android:layout_height="36dp" android:background="@drawable/bg_color_swatch_ring" android:visibility="gone" />
+                </FrameLayout>
+
+                <FrameLayout android:layout_width="36dp" android:layout_height="36dp" android:layout_marginEnd="8dp">
+                    <View android:id="@+id/colorYellow" android:layout_width="28dp" android:layout_height="28dp" android:layout_gravity="center" android:background="@drawable/bg_color_swatch" android:backgroundTint="#FDD835" />
+                    <View android:id="@+id/ringYellow" android:layout_width="36dp" android:layout_height="36dp" android:background="@drawable/bg_color_swatch_ring" android:visibility="gone" />
+                </FrameLayout>
+
+                <FrameLayout android:layout_width="36dp" android:layout_height="36dp" android:layout_marginEnd="8dp">
+                    <View android:id="@+id/colorGreen" android:layout_width="28dp" android:layout_height="28dp" android:layout_gravity="center" android:background="@drawable/bg_color_swatch" android:backgroundTint="#43A047" />
+                    <View android:id="@+id/ringGreen" android:layout_width="36dp" android:layout_height="36dp" android:background="@drawable/bg_color_swatch_ring" android:visibility="gone" />
+                </FrameLayout>
+
+                <FrameLayout android:layout_width="36dp" android:layout_height="36dp" android:layout_marginEnd="8dp">
+                    <View android:id="@+id/colorBlue" android:layout_width="28dp" android:layout_height="28dp" android:layout_gravity="center" android:background="@drawable/bg_color_swatch" android:backgroundTint="#1E88E5" />
+                    <View android:id="@+id/ringBlue" android:layout_width="36dp" android:layout_height="36dp" android:background="@drawable/bg_color_swatch_ring" android:visibility="gone" />
+                </FrameLayout>
+
+                <FrameLayout android:layout_width="36dp" android:layout_height="36dp" android:layout_marginEnd="8dp">
+                    <View android:id="@+id/colorPurple" android:layout_width="28dp" android:layout_height="28dp" android:layout_gravity="center" android:background="@drawable/bg_color_swatch" android:backgroundTint="#8E24AA" />
+                    <View android:id="@+id/ringPurple" android:layout_width="36dp" android:layout_height="36dp" android:background="@drawable/bg_color_swatch_ring" android:visibility="gone" />
+                </FrameLayout>
+
+                <FrameLayout android:layout_width="36dp" android:layout_height="36dp">
+                    <View android:id="@+id/colorPink" android:layout_width="28dp" android:layout_height="28dp" android:layout_gravity="center" android:background="@drawable/bg_color_swatch" android:backgroundTint="#D81B60" />
+                    <View android:id="@+id/ringPink" android:layout_width="36dp" android:layout_height="36dp" android:background="@drawable/bg_color_swatch_ring" android:visibility="gone" />
+                </FrameLayout>
 
             </LinearLayout>
 
             <!-- Color Swatches Row 2 -->
             <LinearLayout
+                android:id="@+id/colorRow2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginBottom="20dp">
 
-                <View android:id="@+id/colorBrown"
-                    android:layout_width="32dp" android:layout_height="32dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_color_swatch"
-                    android:backgroundTint="#6D4C41" />
-                <View android:id="@+id/colorBeige"
-                    android:layout_width="32dp" android:layout_height="32dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_color_swatch"
-                    android:backgroundTint="#D7CCC8" />
-                <View android:id="@+id/colorGray"
-                    android:layout_width="32dp" android:layout_height="32dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_color_swatch"
-                    android:backgroundTint="#757575" />
-                <View android:id="@+id/colorBlack"
-                    android:layout_width="32dp" android:layout_height="32dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_color_swatch"
-                    android:backgroundTint="#212121" />
-                <View android:id="@+id/colorWhite"
-                    android:layout_width="32dp" android:layout_height="32dp"
-                    android:background="@drawable/bg_color_swatch_outline"
-                    android:backgroundTint="#FFFFFF" />
+                <FrameLayout android:layout_width="36dp" android:layout_height="36dp" android:layout_marginEnd="8dp">
+                    <View android:id="@+id/colorBrown" android:layout_width="28dp" android:layout_height="28dp" android:layout_gravity="center" android:background="@drawable/bg_color_swatch" android:backgroundTint="#6D4C41" />
+                    <View android:id="@+id/ringBrown" android:layout_width="36dp" android:layout_height="36dp" android:background="@drawable/bg_color_swatch_ring" android:visibility="gone" />
+                </FrameLayout>
+
+                <FrameLayout android:layout_width="36dp" android:layout_height="36dp" android:layout_marginEnd="8dp">
+                    <View android:id="@+id/colorBeige" android:layout_width="28dp" android:layout_height="28dp" android:layout_gravity="center" android:background="@drawable/bg_color_swatch" android:backgroundTint="#D7CCC8" />
+                    <View android:id="@+id/ringBeige" android:layout_width="36dp" android:layout_height="36dp" android:background="@drawable/bg_color_swatch_ring" android:visibility="gone" />
+                </FrameLayout>
+
+                <FrameLayout android:layout_width="36dp" android:layout_height="36dp" android:layout_marginEnd="8dp">
+                    <View android:id="@+id/colorGray" android:layout_width="28dp" android:layout_height="28dp" android:layout_gravity="center" android:background="@drawable/bg_color_swatch" android:backgroundTint="#757575" />
+                    <View android:id="@+id/ringGray" android:layout_width="36dp" android:layout_height="36dp" android:background="@drawable/bg_color_swatch_ring" android:visibility="gone" />
+                </FrameLayout>
+
+                <FrameLayout android:layout_width="36dp" android:layout_height="36dp" android:layout_marginEnd="8dp">
+                    <View android:id="@+id/colorBlack" android:layout_width="28dp" android:layout_height="28dp" android:layout_gravity="center" android:background="@drawable/bg_color_swatch" android:backgroundTint="#212121" />
+                    <View android:id="@+id/ringBlack" android:layout_width="36dp" android:layout_height="36dp" android:background="@drawable/bg_color_swatch_ring" android:visibility="gone" />
+                </FrameLayout>
+
+                <FrameLayout android:layout_width="36dp" android:layout_height="36dp" android:layout_marginEnd="8dp">
+                    <View android:id="@+id/colorWhite" android:layout_width="28dp" android:layout_height="28dp" android:layout_gravity="center" android:background="@drawable/bg_color_swatch_outline" android:backgroundTint="#FFFFFF" />
+                    <View android:id="@+id/ringWhite" android:layout_width="36dp" android:layout_height="36dp" android:background="@drawable/bg_color_swatch_ring" android:visibility="gone" />
+                </FrameLayout>
+
+                <!-- Add Custom Color Button -->
+                <FrameLayout
+                    android:id="@+id/btnAddColor"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:background="@drawable/bg_add_color">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="+"
+                        android:textColor="#888888"
+                        android:textSize="18sp"
+                        android:gravity="center" />
+                </FrameLayout>
 
             </LinearLayout>
 
