@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_dialog"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="24dp">
+
+    <!-- Drag handle -->
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="16dp"
+        android:background="#555555" />
+
+    <!-- Title + Save -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="12dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Edit Header"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSaveHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:text="Save"
+            android:textColor="#121212"
+            android:textStyle="bold"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            app:backgroundTint="#FFFFFF"
+            app:cornerRadius="8dp" />
+
+    </LinearLayout>
+
+    <!-- Text input -->
+    <EditText
+        android:id="@+id/etHeaderText"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_input_dark"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:hint="Enter Text (optional)"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#666666"
+        android:textSize="13sp"
+        android:inputType="text" />
+
+    <!-- Logo label -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logo"
+        android:textColor="#AAAAAA"
+        android:textSize="12sp"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Logo symbol grid -->
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="7"
+        android:layout_marginBottom="16dp">
+
+        <TextView android:id="@+id/sym1" android:layout_width="0dp" android:layout_height="40dp" android:layout_columnWeight="1" android:gravity="center" android:text="✦" android:textColor="#FFFFFF" android:textSize="18sp" android:background="@drawable/bg_symbol_selected" android:layout_margin="3dp" />
+        <TextView android:id="@+id/sym2" android:layout_width="0dp" android:layout_height="40dp" android:layout_columnWeight="1" android:gravity="center" android:text="✧" android:textColor="#FFFFFF" android:textSize="18sp" android:background="@drawable/bg_symbol_unselected" android:layout_margin="3dp" />
+        <TextView android:id="@+id/sym3" android:layout_width="0dp" android:layout_height="40dp" android:layout_columnWeight="1" android:gravity="center" android:text="★" android:textColor="#FFFFFF" android:textSize="18sp" android:background="@drawable/bg_symbol_unselected" android:layout_margin="3dp" />
+        <TextView android:id="@+id/sym4" android:layout_width="0dp" android:layout_height="40dp" android:layout_columnWeight="1" android:gravity="center" android:text="☆" android:textColor="#FFFFFF" android:textSize="18sp" android:background="@drawable/bg_symbol_unselected" android:layout_margin="3dp" />
+        <TextView android:id="@+id/sym5" android:layout_width="0dp" android:layout_height="40dp" android:layout_columnWeight="1" android:gravity="center" android:text="✶" android:textColor="#FFFFFF" android:textSize="18sp" android:background="@drawable/bg_symbol_unselected" android:layout_margin="3dp" />
+        <TextView android:id="@+id/sym6" android:layout_width="0dp" android:layout_height="40dp" android:layout_columnWeight="1" android:gravity="center" android:text="✸" android:textColor="#FFFFFF" android:textSize="18sp" android:background="@drawable/bg_symbol_unselected" android:layout_margin="3dp" />
+        <TextView android:id="@+id/sym7" android:layout_width="0dp" android:layout_height="40dp" android:layout_columnWeight="1" android:gravity="center" android:text="❋" android:textColor="#FFFFFF" android:textSize="18sp" android:background="@drawable/bg_symbol_unselected" android:layout_margin="3dp" />
+        <TextView android:id="@+id/sym8" android:layout_width="0dp" android:layout_height="40dp" android:layout_columnWeight="1" android:gravity="center" android:text="❊" android:textColor="#FFFFFF" android:textSize="18sp" android:background="@drawable/bg_symbol_unselected" android:layout_margin="3dp" />
+        <TextView android:id="@+id/sym9" android:layout_width="0dp" android:layout_height="40dp" android:layout_columnWeight="1" android:gravity="center" android:text="✽" android:textColor="#FFFFFF" android:textSize="18sp" android:background="@drawable/bg_symbol_unselected" android:layout_margin="3dp" />
+        <TextView android:id="@+id/sym10" android:layout_width="0dp" android:layout_height="40dp" android:layout_columnWeight="1" android:gravity="center" android:text="✼" android:textColor="#FFFFFF" android:textSize="18sp" android:background="@drawable/bg_symbol_unselected" android:layout_margin="3dp" />
+        <TextView android:id="@+id/sym11" android:layout_width="0dp" android:layout_height="40dp" android:layout_columnWeight="1" android:gravity="center" android:text="✻" android:textColor="#FFFFFF" android:textSize="18sp" android:background="@drawable/bg_symbol_unselected" android:layout_margin="3dp" />
+        <TextView android:id="@+id/sym12" android:layout_width="0dp" android:layout_height="40dp" android:layout_columnWeight="1" android:gravity="center" android:text="❉" android:textColor="#FFFFFF" android:textSize="18sp" android:background="@drawable/bg_symbol_unselected" android:layout_margin="3dp" />
+        <TextView android:id="@+id/sym13" android:layout_width="0dp" android:layout_height="40dp" android:layout_columnWeight="1" android:gravity="center" android:text="✙" android:textColor="#FFFFFF" android:textSize="18sp" android:background="@drawable/bg_symbol_unselected" android:layout_margin="3dp" />
+        <TextView android:id="@+id/sym14" android:layout_width="0dp" android:layout_height="40dp" android:layout_columnWeight="1" android:gravity="center" android:text="✛" android:textColor="#FFFFFF" android:textSize="18sp" android:background="@drawable/bg_symbol_unselected" android:layout_margin="3dp" />
+
+    </GridLayout>
+
+    <!-- Color label -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Color"
+        android:textColor="#AAAAAA"
+        android:textSize="12sp"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Color swatches -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <View android:layout_width="32dp" android:layout_height="32dp" android:layout_marginEnd="8dp" android:background="@drawable/bg_color_swatch" android:backgroundTint="#E53935" />
+        <View android:layout_width="32dp" android:layout_height="32dp" android:layout_marginEnd="8dp" android:background="@drawable/bg_color_swatch" android:backgroundTint="#FB8C00" />
+        <View android:layout_width="32dp" android:layout_height="32dp" android:layout_marginEnd="8dp" android:background="@drawable/bg_color_swatch" android:backgroundTint="#FDD835" />
+        <View android:layout_width="32dp" android:layout_height="32dp" android:layout_marginEnd="8dp" android:background="@drawable/bg_color_swatch" android:backgroundTint="#43A047" />
+        <View android:layout_width="32dp" android:layout_height="32dp" android:layout_marginEnd="8dp" android:background="@drawable/bg_color_swatch" android:backgroundTint="#1E88E5" />
+        <View android:layout_width="32dp" android:layout_height="32dp" android:layout_marginEnd="8dp" android:background="@drawable/bg_color_swatch" android:backgroundTint="#8E24AA" />
+        <View android:layout_width="32dp" android:layout_height="32dp" android:background="@drawable/bg_color_swatch_outline" android:backgroundTint="#FFFFFF" />
+
+    </LinearLayout>
+
+</LinearLayout>

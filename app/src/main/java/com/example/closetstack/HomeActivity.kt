@@ -110,8 +110,10 @@ class HomeActivity : AppCompatActivity() {
                         true
                     }
                     R.id.nav_profile -> {
-                        Toast.makeText(this, "Profile screen coming soon!", Toast.LENGTH_SHORT).show()
-                        false
+                        startActivity(Intent(this, ProfileActivity::class.java))
+                        overridePendingTransition(0, 0)
+                        finish()
+                        true
                     }
                     else -> false
                 }

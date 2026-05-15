@@ -103,8 +103,10 @@ class OutfitsActivity : AppCompatActivity() {
                     }
                     R.id.nav_outfits -> true
                     R.id.nav_profile -> {
-                        Toast.makeText(this@OutfitsActivity, "Profile coming soon!", Toast.LENGTH_SHORT).show()
-                        false
+                        startActivity(Intent(this@OutfitsActivity, ProfileActivity::class.java))
+                        overridePendingTransition(0, 0)
+                        finish()
+                        true
                     }
                     else -> false
                 }

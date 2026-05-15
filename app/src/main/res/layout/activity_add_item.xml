@@ -45,7 +45,6 @@
                 android:layout_marginStart="12dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </com.google.android.material.appbar.AppBarLayout>
 
     <!-- Scrollable Content -->

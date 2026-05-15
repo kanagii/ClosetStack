@@ -144,8 +144,10 @@ class ClosetActivity : AppCompatActivity() {
                         false
                     }
                     R.id.nav_profile -> {
-                        Toast.makeText(this@ClosetActivity, "Profile coming soon!", Toast.LENGTH_SHORT).show()
-                        false
+                        startActivity(Intent(this@ClosetActivity, ProfileActivity::class.java))
+                        overridePendingTransition(0, 0)
+                        finish()
+                        true
                     }
                     else -> false
                 }
