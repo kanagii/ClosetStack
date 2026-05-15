@@ -5,11 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark_navy"
-    tools:context=".ClosetActivity">
+    tools:context=".OutfitsActivity">
 
     <!-- App Bar -->
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/dark_navy"
@@ -21,12 +20,11 @@
             android:paddingStart="16dp"
             android:paddingEnd="16dp">
 
-            <!-- Title -->
             <TextView
-                android:id="@+id/tvClosetTitle"
+                android:id="@+id/tvOutfitsTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="My Closet"
+                android:text="My Outfits"
                 android:textColor="#FFFFFF"
                 android:textSize="22sp"
                 android:textStyle="bold"
@@ -34,9 +32,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <!-- Add Item Button -->
             <ImageView
-                android:id="@+id/ivAddItem"
+                android:id="@+id/ivAddOutfit"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:src="@drawable/ic_add_circle"
@@ -48,9 +45,9 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <!-- Item count + outfit count -->
+        <!-- Stats -->
         <TextView
-            android:id="@+id/tvClosetStats"
+            android:id="@+id/tvOutfitStats"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -59,7 +56,7 @@
             android:textColor="#888888"
             android:textSize="12sp" />
 
-        <!-- Category Filter Tabs -->
+        <!-- Category Tabs -->
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -70,15 +67,14 @@
             android:clipToPadding="false">
 
             <LinearLayout
-                android:id="@+id/llCategories"
+                android:id="@+id/llOutfitCategories"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical">
 
-                <!-- All -->
                 <TextView
-                    android:id="@+id/tvCatAll"
+                    android:id="@+id/tvOCatAll"
                     android:layout_width="wrap_content"
                     android:layout_height="32dp"
                     android:layout_marginEnd="8dp"
@@ -90,9 +86,8 @@
                     android:textColor="#000000"
                     android:textSize="13sp" />
 
-                <!-- Tops -->
                 <TextView
-                    android:id="@+id/tvCatTops"
+                    android:id="@+id/tvOCatCasual"
                     android:layout_width="wrap_content"
                     android:layout_height="32dp"
                     android:layout_marginEnd="8dp"
@@ -100,13 +95,12 @@
                     android:gravity="center"
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
-                    android:text="tops"
+                    android:text="casual"
                     android:textColor="#AAAAAA"
                     android:textSize="13sp" />
 
-                <!-- Bottoms -->
                 <TextView
-                    android:id="@+id/tvCatBottoms"
+                    android:id="@+id/tvOCatFormal"
                     android:layout_width="wrap_content"
                     android:layout_height="32dp"
                     android:layout_marginEnd="8dp"
@@ -114,13 +108,12 @@
                     android:gravity="center"
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
-                    android:text="bottoms"
+                    android:text="formal"
                     android:textColor="#AAAAAA"
                     android:textSize="13sp" />
 
-                <!-- Outer -->
                 <TextView
-                    android:id="@+id/tvCatOuter"
+                    android:id="@+id/tvOCatBusiness"
                     android:layout_width="wrap_content"
                     android:layout_height="32dp"
                     android:layout_marginEnd="8dp"
@@ -128,34 +121,19 @@
                     android:gravity="center"
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
-                    android:text="outer"
+                    android:text="business"
                     android:textColor="#AAAAAA"
                     android:textSize="13sp" />
 
-                <!-- Accessories -->
                 <TextView
-                    android:id="@+id/tvCatAccessories"
-                    android:layout_width="wrap_content"
-                    android:layout_height="32dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_category_unselected"
-                    android:gravity="center"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
-                    android:text="accessories"
-                    android:textColor="#AAAAAA"
-                    android:textSize="13sp" />
-
-                <!-- Shoes -->
-                <TextView
-                    android:id="@+id/tvCatShoes"
+                    android:id="@+id/tvOCatStreet"
                     android:layout_width="wrap_content"
                     android:layout_height="32dp"
                     android:background="@drawable/bg_category_unselected"
                     android:gravity="center"
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
-                    android:text="shoes"
+                    android:text="streetwear"
                     android:textColor="#AAAAAA"
                     android:textSize="13sp" />
 
@@ -164,9 +142,9 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- Clothing Grid -->
+    <!-- Outfits Grid -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvClosetItems"
+        android:id="@+id/rvOutfits"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingStart="12dp"
@@ -175,7 +153,7 @@
         android:paddingBottom="80dp"
         android:clipToPadding="false"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:listitem="@layout/item_closet_clothing" />
+        tools:listitem="@layout/item_outfit_card" />
 
     <!-- Bottom Navigation Bar -->
     <com.google.android.material.bottomnavigation.BottomNavigationView

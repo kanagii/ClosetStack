@@ -48,6 +48,7 @@ class AddItemActivity : AppCompatActivity() {
 
         setupBack()
         setupSpinners()
+        setupAutocomplete()
         setupSizeSelector()
         setupColorSelector()
         setupPhotoButtons()
@@ -76,6 +77,41 @@ class AddItemActivity : AppCompatActivity() {
         val subAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, subcategories)
         subAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         findViewById<AppCompatSpinner>(R.id.spinnerSubcategory).adapter = subAdapter
+    }
+
+    private fun setupAutocomplete() {
+        val brands = listOf(
+            "BENCH", "Uniqlo", "H&M", "Zara", "Nike", "Adidas", "Puma", "Reebok",
+            "Supreme", "Bershka", "Pull&Bear", "Mango", "Forever 21", "Levi's",
+            "Tommy Hilfiger", "Lacoste", "Gucci", "Louis Vuitton", "Balenciaga", "Off-White"
+        )
+
+        val tagList = listOf(
+            "casual", "streetwear", "formal", "vintage", "minimalist", "sporty",
+            "aesthetic", "grunge", "preppy", "boho", "oversized", "fitted",
+            "monochrome", "colorful", "layered", "summer", "winter", "fall",
+            "spring", "thrifted"
+        )
+
+        // Brand autocomplete
+        val brandAdapter = ArrayAdapter<String>(
+            this,
+            android.R.layout.simple_dropdown_item_1line,
+            brands
+        )
+        val etBrand = findViewById<AutoCompleteTextView>(R.id.etBrand)
+        etBrand.setAdapter(brandAdapter)
+        etBrand.setTextColor(0xFFFFFFFF.toInt())
+        etBrand.setHintTextColor(0xFF555555.toInt())
+
+        // Tags autocomplete
+        val etTags = findViewById<AutoCompleteTextView>(R.id.etTags)
+        etTags.setTextColor(0xFFFFFFFF.toInt())
+        etTags.setHintTextColor(0xFF555555.toInt())
+
+        val tagAdapter = TagAutoCompleteAdapter(this, tagList, etTags)
+        etTags.setAdapter(tagAdapter)
+        etTags.threshold = 1
     }
 
     private fun setupSizeSelector() {

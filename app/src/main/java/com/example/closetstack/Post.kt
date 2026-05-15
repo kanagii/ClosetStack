@@ -7,6 +7,7 @@ data class Post(
     val imageRes: Int,
     val avatarRes: Int,
     val timestamp: String,
+    val feedType: String = "all",  // "all", "following", "follower"
     var isSaved: Boolean = false,
     var userRating: Float = 0f
 )

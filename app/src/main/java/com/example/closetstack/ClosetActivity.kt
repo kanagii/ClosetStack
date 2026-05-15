@@ -138,7 +138,9 @@ class ClosetActivity : AppCompatActivity() {
                     }
                     R.id.nav_closet -> true
                     R.id.nav_outfits -> {
-                        Toast.makeText(this@ClosetActivity, "Outfits coming soon!", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this@ClosetActivity, OutfitsActivity::class.java))
+                        overridePendingTransition(0, 0)
+                        finish()
                         false
                     }
                     R.id.nav_profile -> {

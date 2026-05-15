@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_navy"
+    tools:context=".StyleCanvasActivity">
+
+    <!-- Top Bar -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/dark_navy"
+        app:elevation="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/ic_arrow_back"
+                app:tint="#FFFFFF"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Style Canvas"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginStart="12dp"
+                app:layout_constraintStart_toEndOf="@id/ivBack"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <!-- Outfit name input button -->
+            <ImageView
+                android:id="@+id/ivOutfitOptions"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/ic_add_circle"
+                app:tint="#FFFFFF"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="100dp"
+        android:clipToPadding="false"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="8dp">
+
+            <!-- Style Outfit + Suggest Outfit side by side -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+
+                <!-- LEFT: Style Outfit canvas -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Style Outfit"
+                        android:textColor="#AAAAAA"
+                        android:textSize="11sp"
+                        android:layout_marginBottom="8dp" />
+
+                    <!-- Top slot -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/slotTop"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:layout_marginBottom="6dp"
+                        app:cardBackgroundColor="#2A2A2A"
+                        app:cardCornerRadius="10dp">
+                        <ImageView
+                            android:id="@+id/ivSlotTop"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/img_post1" />
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Bottom slot row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <!-- Bottom left slot -->
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/slotBottom"
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="4dp"
+                            app:cardBackgroundColor="#2A2A2A"
+                            app:cardCornerRadius="10dp">
+                            <ImageView
+                                android:id="@+id/ivSlotBottom"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/img_post2" />
+                        </androidx.cardview.widget.CardView>
+
+                        <!-- Accessories slot (dashed) -->
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/slotAccessories"
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            app:cardBackgroundColor="#1A1A1A"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="0dp">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:background="@drawable/bg_dashed_border">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="+"
+                                    android:textColor="#666666"
+                                    android:textSize="20sp" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Add Accessories"
+                                    android:textColor="#666666"
+                                    android:textSize="9sp"
+                                    android:gravity="center" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                    </LinearLayout>
+
+                    <!-- Shoes slot -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/slotShoes"
+                        android:layout_width="match_parent"
+                        android:layout_height="90dp"
+                        android:layout_marginTop="6dp"
+                        app:cardBackgroundColor="#2A2A2A"
+                        app:cardCornerRadius="10dp">
+                        <ImageView
+                            android:id="@+id/ivSlotShoes"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/img_post3" />
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+                <!-- RIGHT: Suggest Outfit column -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Suggest Outfit"
+                        android:textColor="#AAAAAA"
+                        android:textSize="11sp"
+                        android:layout_marginBottom="8dp" />
+
+                    <!-- Suggested item 1 -->
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="6dp">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="120dp"
+                            app:cardBackgroundColor="#2A2A2A"
+                            app:cardCornerRadius="10dp">
+                            <ImageView
+                                android:id="@+id/ivSuggest1"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/img_post4" />
+                        </androidx.cardview.widget.CardView>
+
+                        <!-- Add button overlay -->
+                        <ImageView
+                            android:id="@+id/ivAddSuggest1"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_gravity="end|bottom"
+                            android:layout_margin="6dp"
+                            android:src="@drawable/ic_add_circle"
+                            android:background="#CC000000"
+                            app:tint="#FFFFFF" />
+                    </FrameLayout>
+
+                    <!-- Suggested item 2 -->
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="6dp">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            app:cardBackgroundColor="#2A2A2A"
+                            app:cardCornerRadius="10dp">
+                            <ImageView
+                                android:id="@+id/ivSuggest2"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/img_post5" />
+                        </androidx.cardview.widget.CardView>
+
+                        <ImageView
+                            android:id="@+id/ivAddSuggest2"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_gravity="end|bottom"
+                            android:layout_margin="6dp"
+                            android:src="@drawable/ic_add_circle"
+                            android:background="#CC000000"
+                            app:tint="#FFFFFF" />
+                    </FrameLayout>
+
+                    <!-- Suggested item 3 -->
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="90dp"
+                            app:cardBackgroundColor="#2A2A2A"
+                            app:cardCornerRadius="10dp">
+                            <ImageView
+                                android:id="@+id/ivSuggest3"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/img_post6" />
+                        </androidx.cardview.widget.CardView>
+
+                        <ImageView
+                            android:id="@+id/ivAddSuggest3"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_gravity="end|bottom"
+                            android:layout_margin="6dp"
+                            android:src="@drawable/ic_add_circle"
+                            android:background="#CC000000"
+                            app:tint="#FFFFFF" />
+                    </FrameLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Save / Reset Buttons -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSaveOutfit"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:text="Save"
+                    android:textColor="#121212"
+                    android:textStyle="bold"
+                    app:backgroundTint="#FFFFFF"
+                    app:cornerRadius="12dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnResetOutfit"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:text="Reset"
+                    android:textColor="#FFFFFF"
+                    app:backgroundTint="#00000000"
+                    app:strokeColor="#555555"
+                    app:strokeWidth="1dp"
+                    app:cornerRadius="12dp" />
+
+            </LinearLayout>
+
+            <!-- Add From Closet label -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add From Closet"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp" />
+
+            <!-- Closet items grid -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvClosetForCanvas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                tools:listitem="@layout/item_closet_clothing" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

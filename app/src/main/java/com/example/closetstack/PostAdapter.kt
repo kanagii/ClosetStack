@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class PostAdapter(
-    private val posts: List<Post>,
+    private var posts: List<Post>,
     private val onSaveClick: (Post) -> Unit,
     private val onRatingChanged: (Post, Float) -> Unit
 ) : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
@@ -73,4 +73,9 @@ class PostAdapter(
     }
 
     override fun getItemCount() = posts.size
+
+    fun updatePosts(newPosts: List<Post>) {
+        posts = newPosts
+        notifyDataSetChanged()
+    }
 }
