@@ -5,21 +5,19 @@
     android:layout_height="wrap_content"
     android:layout_margin="6dp"
     app:cardBackgroundColor="#1E1E1E"
-    app:cardCornerRadius="14dp"
-    app:cardElevation="3dp">
+    app:cardCornerRadius="18dp"
+    app:cardElevation="6dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="10dp">
+        android:orientation="vertical">
 
-        <!-- 2x2 collage using LinearLayouts -->
+        <!-- 2x2 collage with colored backgrounds -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:orientation="vertical"
-            android:layout_marginBottom="10dp">
+            android:layout_height="190dp"
+            android:orientation="vertical">
 
             <!-- Row 1 -->
             <LinearLayout
@@ -27,24 +25,38 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:orientation="horizontal"
-                android:layout_marginBottom="2dp">
+                android:layout_marginBottom="1.5dp">
 
-                <ImageView
-                    android:id="@+id/ivOutfitItem1"
+                <FrameLayout
+                    android:id="@+id/cellTopLeft"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:layout_marginEnd="2dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/img_post1" />
+                    android:layout_marginEnd="1.5dp"
+                    android:background="#F5C842">
+                    <ImageView
+                        android:id="@+id/ivOutfitItem1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerInside"
+                        android:padding="6dp"
+                        android:src="@drawable/benchtee" />
+                </FrameLayout>
 
-                <ImageView
-                    android:id="@+id/ivOutfitItem2"
+                <FrameLayout
+                    android:id="@+id/cellTopRight"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/img_post2" />
+                    android:background="#E05C5C">
+                    <ImageView
+                        android:id="@+id/ivOutfitItem2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerInside"
+                        android:padding="6dp"
+                        android:src="@drawable/relaxedpants" />
+                </FrameLayout>
 
             </LinearLayout>
 
@@ -55,50 +67,116 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/ivOutfitItem3"
+                <FrameLayout
+                    android:id="@+id/cellBottomLeft"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:layout_marginEnd="2dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/img_post3" />
+                    android:layout_marginEnd="1.5dp"
+                    android:background="#5B9BD5">
+                    <ImageView
+                        android:id="@+id/ivOutfitItem3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerInside"
+                        android:padding="6dp"
+                        android:src="@drawable/airforce" />
 
-                <ImageView
-                    android:id="@+id/ivOutfitItem4"
+                    <!-- NO ACCESSORIES label -->
+                    <TextView
+                        android:id="@+id/tvNoAccessories"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:background="#66000000"
+                        android:gravity="center"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:text="NO ACCESSORIES"
+                        android:textColor="#FFFFFF"
+                        android:textSize="7sp"
+                        android:letterSpacing="0.08"
+                        android:visibility="gone" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/cellBottomRight"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/img_post4" />
+                    android:background="#7DC47D">
+                    <ImageView
+                        android:id="@+id/ivOutfitItem4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerInside"
+                        android:padding="6dp"
+                        android:src="@drawable/adjustable_cap" />
+                </FrameLayout>
 
             </LinearLayout>
 
         </LinearLayout>
 
-        <!-- Outfit Name -->
-        <TextView
-            android:id="@+id/tvOutfitName"
+        <!-- Bottom info -->
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hype boy"
-            android:textColor="#FFFFFF"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:maxLines="1"
-            android:ellipsize="end" />
+            android:paddingStart="12dp"
+            android:paddingEnd="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:background="#1E1E1E">
 
-        <!-- Outfit Description -->
-        <TextView
-            android:id="@+id/tvOutfitDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:text="4 items · casual"
-            android:textColor="#888888"
-            android:textSize="11sp"
-            android:maxLines="1"
-            android:ellipsize="end" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tvOutfitDescription">
+
+                <TextView
+                    android:id="@+id/tvOutfitName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hype Boy"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:maxLines="1"
+                    android:ellipsize="end" />
+
+                <TextView
+                    android:id="@+id/tvOutfitCategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Casual"
+                    android:textColor="#888888"
+                    android:textSize="11sp"
+                    android:layout_marginTop="1dp" />
+
+            </LinearLayout>
+
+            <!-- Item count badge -->
+            <TextView
+                android:id="@+id/tvOutfitDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4 items"
+                android:textColor="#AAAAAA"
+                android:textSize="11sp"
+                android:background="@drawable/bg_badge_subtle"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 

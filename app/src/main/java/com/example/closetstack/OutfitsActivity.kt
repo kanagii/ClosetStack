@@ -17,12 +17,12 @@ class OutfitsActivity : AppCompatActivity() {
     private val categories = listOf("all", "casual", "formal", "business", "streetwear")
 
     private val allOutfits = listOf(
-        Outfit("Hype Boy", "4 items · casual", "casual", R.drawable.img_post1, R.drawable.img_post2, R.drawable.img_post3, R.drawable.img_post4),
-        Outfit("Oversized Feels", "4 items · streetwear", "streetwear", R.drawable.img_post5, R.drawable.img_post6, R.drawable.img_post1, R.drawable.img_post2),
-        Outfit("Saturday", "3 items · casual", "casual", R.drawable.img_post3, R.drawable.img_post4, R.drawable.img_post5, R.drawable.img_post6),
-        Outfit("Office Ready", "4 items · formal", "formal", R.drawable.img_post2, R.drawable.img_post3, R.drawable.img_post4, R.drawable.img_post5),
-        Outfit("Street King", "4 items · streetwear", "streetwear", R.drawable.img_post6, R.drawable.img_post1, R.drawable.img_post2, R.drawable.img_post3),
-        Outfit("Boardroom", "4 items · business", "business", R.drawable.img_post4, R.drawable.img_post5, R.drawable.img_post6, R.drawable.img_post1)
+        Outfit("Street Cap Fit", "4 items · streetwear", "streetwear", R.drawable.adjustable_cap, R.drawable.benchtee, R.drawable.relaxedpants, R.drawable.airforce),
+        Outfit("Crop & Chino", "4 items · casual", "casual", R.drawable.croptop, R.drawable.flary_chino, R.drawable.airforce, R.drawable.adjustable_cap),
+        Outfit("Office Ready", "4 items · formal", "formal", R.drawable.whiteshirt, R.drawable.relaxedpants, R.drawable.guccijacket, R.drawable.airforce),
+        Outfit("Gucci Street", "4 items · streetwear", "streetwear", R.drawable.guccijacket, R.drawable.benchtee, R.drawable.plaidskirt, R.drawable.airforce),
+        Outfit("Blouse & Plaid", "4 items · casual", "casual", R.drawable.womensblouse, R.drawable.plaidskirt, R.drawable.airforce, R.drawable.adjustable_cap),
+        Outfit("Boardroom", "4 items · business", "business", R.drawable.whiteshirt, R.drawable.guccijacket, R.drawable.relaxedpants, R.drawable.airforce)
     )
 
     private val categoryViews: MutableMap<String, TextView> = mutableMapOf()
@@ -78,7 +78,7 @@ class OutfitsActivity : AppCompatActivity() {
     }
 
     private fun setupAddButton() {
-        findViewById<android.widget.ImageView>(R.id.ivAddOutfit).setOnClickListener {
+        findViewById<android.view.View>(R.id.ivAddOutfit).setOnClickListener {
             startActivity(Intent(this, StyleCanvasActivity::class.java))
             overridePendingTransition(0, 0)
         }

@@ -7,7 +7,6 @@
     android:background="@color/dark_navy"
     tools:context=".ClosetActivity">
 
-    <!-- App Bar -->
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
@@ -15,49 +14,82 @@
         android:background="@color/dark_navy"
         app:elevation="0dp">
 
+        <!-- Header -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="60dp"
             android:paddingStart="16dp"
             android:paddingEnd="16dp">
 
-            <!-- Title -->
-            <TextView
-                android:id="@+id/tvClosetTitle"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="My Closet"
-                android:textColor="#FFFFFF"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:orientation="vertical"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
 
-            <!-- Add Item Button -->
-            <ImageView
-                android:id="@+id/ivAddItem"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:src="@drawable/ic_add_circle"
-                android:padding="2dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="My Closet"
+                    android:textColor="#FFFFFF"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvClosetStats"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10 items · 6 outfits"
+                    android:textColor="#888888"
+                    android:textSize="11sp" />
+
+            </LinearLayout>
+
+            <!-- Add button -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardAddItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="#2A2A2A"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:tint="#FFFFFF" />
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <LinearLayout
+                    android:id="@+id/ivAddItem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="14dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_add_circle"
+                        app:tint="#FFFFFF" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:text="Add Item"
+                        android:textColor="#FFFFFF"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <!-- Item count + outfit count -->
-        <TextView
-            android:id="@+id/tvClosetStats"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="8dp"
-            android:text="20 items · 2 outfits"
-            android:textColor="#888888"
-            android:textSize="12sp" />
 
         <!-- Category Filter Tabs -->
         <HorizontalScrollView
@@ -66,7 +98,7 @@
             android:scrollbars="none"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
-            android:paddingBottom="12dp"
+            android:paddingBottom="10dp"
             android:clipToPadding="false">
 
             <LinearLayout
@@ -76,86 +108,81 @@
                 android:orientation="horizontal"
                 android:gravity="center_vertical">
 
-                <!-- All -->
                 <TextView
                     android:id="@+id/tvCatAll"
                     android:layout_width="wrap_content"
-                    android:layout_height="32dp"
+                    android:layout_height="34dp"
                     android:layout_marginEnd="8dp"
                     android:background="@drawable/bg_category_selected"
                     android:gravity="center"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
-                    android:text="all"
+                    android:paddingStart="18dp"
+                    android:paddingEnd="18dp"
+                    android:text="All"
                     android:textColor="#000000"
-                    android:textSize="13sp" />
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
 
-                <!-- Tops -->
                 <TextView
                     android:id="@+id/tvCatTops"
                     android:layout_width="wrap_content"
-                    android:layout_height="32dp"
+                    android:layout_height="34dp"
                     android:layout_marginEnd="8dp"
                     android:background="@drawable/bg_category_unselected"
                     android:gravity="center"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
-                    android:text="tops"
+                    android:paddingStart="18dp"
+                    android:paddingEnd="18dp"
+                    android:text="Tops"
                     android:textColor="#AAAAAA"
                     android:textSize="13sp" />
 
-                <!-- Bottoms -->
                 <TextView
                     android:id="@+id/tvCatBottoms"
                     android:layout_width="wrap_content"
-                    android:layout_height="32dp"
+                    android:layout_height="34dp"
                     android:layout_marginEnd="8dp"
                     android:background="@drawable/bg_category_unselected"
                     android:gravity="center"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
-                    android:text="bottoms"
+                    android:paddingStart="18dp"
+                    android:paddingEnd="18dp"
+                    android:text="Bottoms"
                     android:textColor="#AAAAAA"
                     android:textSize="13sp" />
 
-                <!-- Outer -->
                 <TextView
                     android:id="@+id/tvCatOuter"
                     android:layout_width="wrap_content"
-                    android:layout_height="32dp"
+                    android:layout_height="34dp"
                     android:layout_marginEnd="8dp"
                     android:background="@drawable/bg_category_unselected"
                     android:gravity="center"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
-                    android:text="outer"
+                    android:paddingStart="18dp"
+                    android:paddingEnd="18dp"
+                    android:text="Outer"
                     android:textColor="#AAAAAA"
                     android:textSize="13sp" />
 
-                <!-- Accessories -->
                 <TextView
                     android:id="@+id/tvCatAccessories"
                     android:layout_width="wrap_content"
-                    android:layout_height="32dp"
+                    android:layout_height="34dp"
                     android:layout_marginEnd="8dp"
                     android:background="@drawable/bg_category_unselected"
                     android:gravity="center"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
-                    android:text="accessories"
+                    android:paddingStart="18dp"
+                    android:paddingEnd="18dp"
+                    android:text="Accessories"
                     android:textColor="#AAAAAA"
                     android:textSize="13sp" />
 
-                <!-- Shoes -->
                 <TextView
                     android:id="@+id/tvCatShoes"
                     android:layout_width="wrap_content"
-                    android:layout_height="32dp"
+                    android:layout_height="34dp"
                     android:background="@drawable/bg_category_unselected"
                     android:gravity="center"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
-                    android:text="shoes"
+                    android:paddingStart="18dp"
+                    android:paddingEnd="18dp"
+                    android:text="Shoes"
                     android:textColor="#AAAAAA"
                     android:textSize="13sp" />
 
@@ -169,8 +196,8 @@
         android:id="@+id/rvClosetItems"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
         android:paddingTop="8dp"
         android:paddingBottom="80dp"
         android:clipToPadding="false"

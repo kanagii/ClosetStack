@@ -14,6 +14,7 @@ class ClosetAdapter(
     inner class ClosetViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val ivClothingImage: ImageView = view.findViewById(R.id.ivClothingImage)
         val tvClothingName: TextView = view.findViewById(R.id.tvClothingName)
+        val tvClothingCategory: TextView = view.findViewById(R.id.tvClothingCategory)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClosetViewHolder {
@@ -26,6 +27,7 @@ class ClosetAdapter(
         val item = items[position]
         holder.ivClothingImage.setImageResource(item.imageRes)
         holder.tvClothingName.text = item.name
+        holder.tvClothingCategory.text = item.category
     }
 
     override fun getItemCount() = items.size

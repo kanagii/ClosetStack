@@ -23,10 +23,10 @@ class HomeActivity : AppCompatActivity() {
         Post(username = "strt_apoy", description = "jacket ta gamay bisag init pilipinas", caption = "Average Rating: 4.8", imageRes = R.drawable.img_post6, avatarRes = R.drawable.usertop1, timestamp = "12h ago", feedType = "all"),
         Post(username = "AyanoKoji", description = "Clean fit check 🖤", caption = "Average Rating: 4.6", imageRes = R.drawable.img_post1, avatarRes = R.drawable.usertop4, timestamp = "14h ago", feedType = "follower"),
         Post(username = "Erosyonz", description = "Layering season is here", caption = "Average Rating: 4.3", imageRes = R.drawable.img_post2, avatarRes = R.drawable.usertop5, timestamp = "16h ago", feedType = "all"),
-        Post(username = "Andre Pham", description = "New cop just dropped 🔥", caption = "Average Rating: 4.7", imageRes = R.drawable.img_post3, avatarRes = R.drawable.usertop6, timestamp = "18h ago", feedType = "following"),
+        Post(username = "Andre Pham", description = "New cop just dropped 🔥", caption = "Average Rating: 4.7", imageRes = R.drawable.graypost, avatarRes = R.drawable.usertop6, timestamp = "18h ago", feedType = "following"),
         Post(username = "boyHipak29", description = "Old money aesthetic today", caption = "Average Rating: 4.5", imageRes = R.drawable.img_post4, avatarRes = R.drawable.usertop3, timestamp = "20h ago", feedType = "follower"),
         Post(username = "Justin Nabunturan", description = "Second fit of the week", caption = "Average Rating: 4.9", imageRes = R.drawable.img_post5, avatarRes = R.drawable.img_user1, timestamp = "1d ago", feedType = "following"),
-        Post(username = "Jerome Batumbakal", description = "Oversized everything 💯", caption = "Average Rating: 4.1", imageRes = R.drawable.img_post6, avatarRes = R.drawable.img_user2, timestamp = "1d ago", feedType = "all")
+        Post(username = "Jerome Batumbakal", description = "Oversized everything 💯", caption = "Average Rating: 4.1", imageRes = R.drawable.whitepost, avatarRes = R.drawable.img_user2, timestamp = "1d ago", feedType = "all")
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {

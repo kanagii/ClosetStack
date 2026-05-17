@@ -4,37 +4,86 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="6dp"
-    app:cardBackgroundColor="#1E1E1E"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="2dp">
+    app:cardBackgroundColor="#F5F3F0"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Clothing Image -->
-        <ImageView
-            android:id="@+id/ivClothingImage"
+        <!-- Image Area -->
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="160dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/img_post1" />
+            android:layout_height="170dp"
+            android:background="#F5F3F0">
 
-        <!-- Item Name -->
-        <TextView
-            android:id="@+id/tvClothingName"
+            <ImageView
+                android:id="@+id/ivClothingImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:padding="12dp"
+                android:src="@drawable/benchtee" />
+
+            <!-- Category badge top-right -->
+            <TextView
+                android:id="@+id/tvClothingCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|end"
+                android:layout_margin="8dp"
+                android:background="@drawable/bg_badge"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
+                android:text="tops"
+                android:textColor="#FFFFFF"
+                android:textSize="9sp"
+                android:textAllCaps="true"
+                android:letterSpacing="0.05" />
+
+        </FrameLayout>
+
+        <!-- Thin divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E0DDD9" />
+
+        <!-- Name + more button -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp"
-            android:paddingTop="6dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="10dp"
+            android:paddingEnd="6dp"
+            android:paddingTop="8dp"
             android:paddingBottom="8dp"
-            android:text="BENCH Unisex..."
-            android:textColor="#FFFFFF"
-            android:textSize="12sp"
-            android:maxLines="1"
-            android:ellipsize="end" />
+            android:background="#F5F3F0">
+
+            <TextView
+                android:id="@+id/tvClothingName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="BENCH Unisex..."
+                android:textColor="#1A1A1A"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:maxLines="1"
+                android:ellipsize="end" />
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/ic_more_vert"
+                android:alpha="0.4" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

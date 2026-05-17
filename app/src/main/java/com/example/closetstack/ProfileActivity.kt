@@ -35,8 +35,8 @@ class ProfileActivity : AppCompatActivity() {
         InspoItem(R.drawable.img_post4, "Street style"),
         InspoItem(R.drawable.img_post5, "Layering fits"),
         InspoItem(R.drawable.img_post6, "Monochrome"),
-        InspoItem(R.drawable.img_post1, "Vintage vibes"),
-        InspoItem(R.drawable.img_post3, "Minimalist")
+        InspoItem(R.drawable.graypost, "Vintage vibes"),
+        InspoItem(R.drawable.whitepost, "Minimalist")
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
