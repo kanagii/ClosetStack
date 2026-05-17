@@ -156,7 +156,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="130dp"
                         android:layout_marginBottom="6dp"
-                        app:cardBackgroundColor="#2A2A2A"
+                        app:cardBackgroundColor="#F5C842"
                         app:cardCornerRadius="12dp">
 
                         <FrameLayout
@@ -175,7 +175,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="bottom"
-                                android:background="#99000000"
+                                android:background="#55000000"
                                 android:gravity="center"
                                 android:padding="4dp"
                                 android:text="TOP"
@@ -199,7 +199,7 @@
                         android:id="@+id/slotAccessories"
                         android:layout_width="match_parent"
                         android:layout_height="90dp"
-                        app:cardBackgroundColor="#1A1A1A"
+                        app:cardBackgroundColor="#B07FD4"
                         app:cardCornerRadius="12dp"
                         app:cardElevation="0dp">
 
@@ -221,20 +221,20 @@
                                 android:layout_height="match_parent"
                                 android:gravity="center"
                                 android:orientation="vertical"
-                                android:background="@drawable/bg_dashed_border">
+                                android:background="@drawable/bg_dashed_border_light">
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="+"
-                                    android:textColor="#666666"
+                                    android:textColor="#FFFFFF"
                                     android:textSize="20sp" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Accessories"
-                                    android:textColor="#666666"
+                                    android:textColor="#FFFFFF"
                                     android:textSize="9sp"
                                     android:gravity="center" />
 
@@ -265,7 +265,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="130dp"
                         android:layout_marginBottom="6dp"
-                        app:cardBackgroundColor="#2A2A2A"
+                        app:cardBackgroundColor="#E05C5C"
                         app:cardCornerRadius="12dp">
 
                         <FrameLayout
@@ -284,7 +284,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="bottom"
-                                android:background="#99000000"
+                                android:background="#55000000"
                                 android:gravity="center"
                                 android:padding="4dp"
                                 android:text="BOTTOM"
@@ -307,7 +307,7 @@
                         android:id="@+id/slotShoes"
                         android:layout_width="match_parent"
                         android:layout_height="90dp"
-                        app:cardBackgroundColor="#2A2A2A"
+                        app:cardBackgroundColor="#5BB5A2"
                         app:cardCornerRadius="12dp">
 
                         <FrameLayout
@@ -326,7 +326,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="bottom"
-                                android:background="#99000000"
+                                android:background="#55000000"
                                 android:gravity="center"
                                 android:padding="4dp"
                                 android:text="SHOES"

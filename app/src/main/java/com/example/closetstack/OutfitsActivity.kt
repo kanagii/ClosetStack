@@ -126,6 +126,7 @@ class OutfitsActivity : AppCompatActivity() {
     private fun setupBottomNav() {
         findViewById<BottomNavigationView>(R.id.bottomNav).apply {
             selectedItemId = R.id.nav_outfits
+            NavAvatarHelper.setCircularAvatar(this, resources, R.drawable.usertop1)
             setOnItemSelectedListener { item ->
                 when (item.itemId) {
                     R.id.nav_home -> {
