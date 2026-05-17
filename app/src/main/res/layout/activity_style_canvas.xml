@@ -42,17 +42,6 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent" />
 
-            <!-- Outfit name input button -->
-            <ImageView
-                android:id="@+id/ivOutfitOptions"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:src="@drawable/ic_add_circle"
-                app:tint="#FFFFFF"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -60,7 +49,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="100dp"
+        android:paddingBottom="40dp"
         android:clipToPadding="false"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
@@ -72,223 +61,288 @@
             android:paddingEnd="16dp"
             android:paddingTop="8dp">
 
-            <!-- Style Outfit + Suggest Outfit side by side -->
+            <!-- Outfit Name Field -->
+            <EditText
+                android:id="@+id/etOutfitName"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_input_dark"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:hint="Outfit name (e.g. Hype Boy)"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#555555"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:inputType="text" />
+
+            <!-- Category Selector -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:layout_marginBottom="16dp">
+
+                <LinearLayout
+                    android:id="@+id/llCanvasCategories"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView android:id="@+id/tvCanvasCatCasual"
+                        android:layout_width="wrap_content" android:layout_height="32dp"
+                        android:layout_marginEnd="8dp" android:gravity="center"
+                        android:paddingStart="16dp" android:paddingEnd="16dp"
+                        android:text="casual" android:textSize="12sp"
+                        android:textColor="#000000" android:textStyle="bold"
+                        android:background="@drawable/bg_category_selected" />
+
+                    <TextView android:id="@+id/tvCanvasCatFormal"
+                        android:layout_width="wrap_content" android:layout_height="32dp"
+                        android:layout_marginEnd="8dp" android:gravity="center"
+                        android:paddingStart="16dp" android:paddingEnd="16dp"
+                        android:text="formal" android:textSize="12sp"
+                        android:textColor="#AAAAAA"
+                        android:background="@drawable/bg_category_unselected" />
+
+                    <TextView android:id="@+id/tvCanvasCatBusiness"
+                        android:layout_width="wrap_content" android:layout_height="32dp"
+                        android:layout_marginEnd="8dp" android:gravity="center"
+                        android:paddingStart="16dp" android:paddingEnd="16dp"
+                        android:text="business" android:textSize="12sp"
+                        android:textColor="#AAAAAA"
+                        android:background="@drawable/bg_category_unselected" />
+
+                    <TextView android:id="@+id/tvCanvasCatStreet"
+                        android:layout_width="wrap_content" android:layout_height="32dp"
+                        android:gravity="center"
+                        android:paddingStart="16dp" android:paddingEnd="16dp"
+                        android:text="streetwear" android:textSize="12sp"
+                        android:textColor="#AAAAAA"
+                        android:background="@drawable/bg_category_unselected" />
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- Canvas Slots label -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Style Outfit"
+                android:textColor="#AAAAAA"
+                android:textSize="11sp"
+                android:layout_marginBottom="8dp" />
+
+            <!-- 4 Slots: Top, Bottom, Shoes, Accessories -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginBottom="16dp">
 
-                <!-- LEFT: Style Outfit canvas -->
+                <!-- Left column: Top + Accessories -->
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginEnd="6dp"
                     android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Style Outfit"
-                        android:textColor="#AAAAAA"
-                        android:textSize="11sp"
-                        android:layout_marginBottom="8dp" />
 
                     <!-- Top slot -->
                     <androidx.cardview.widget.CardView
                         android:id="@+id/slotTop"
                         android:layout_width="match_parent"
-                        android:layout_height="120dp"
+                        android:layout_height="130dp"
                         android:layout_marginBottom="6dp"
                         app:cardBackgroundColor="#2A2A2A"
-                        app:cardCornerRadius="10dp">
-                        <ImageView
-                            android:id="@+id/ivSlotTop"
+                        app:cardCornerRadius="12dp">
+
+                        <FrameLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/img_post1" />
-                    </androidx.cardview.widget.CardView>
+                            android:layout_height="match_parent">
 
-                    <!-- Bottom slot row -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <!-- Bottom left slot -->
-                        <androidx.cardview.widget.CardView
-                            android:id="@+id/slotBottom"
-                            android:layout_width="0dp"
-                            android:layout_height="100dp"
-                            android:layout_weight="1"
-                            android:layout_marginEnd="4dp"
-                            app:cardBackgroundColor="#2A2A2A"
-                            app:cardCornerRadius="10dp">
                             <ImageView
-                                android:id="@+id/ivSlotBottom"
+                                android:id="@+id/ivSlotTop"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/img_post2" />
-                        </androidx.cardview.widget.CardView>
+                                android:scaleType="centerInside"
+                                android:padding="8dp"
+                                android:src="@drawable/benchtee" />
 
-                        <!-- Accessories slot (dashed) -->
-                        <androidx.cardview.widget.CardView
-                            android:id="@+id/slotAccessories"
-                            android:layout_width="0dp"
-                            android:layout_height="100dp"
-                            android:layout_weight="1"
-                            app:cardBackgroundColor="#1A1A1A"
-                            app:cardCornerRadius="10dp"
-                            app:cardElevation="0dp">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:background="#99000000"
+                                android:gravity="center"
+                                android:padding="4dp"
+                                android:text="TOP"
+                                android:textColor="#AAAAAA"
+                                android:textSize="8sp"
+                                android:letterSpacing="0.1" />
+
+                            <!-- Active indicator ring -->
+                            <View
+                                android:id="@+id/ringSlotTop"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/bg_slot_active"
+                                android:visibility="visible" />
+
+                        </FrameLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Accessories slot -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/slotAccessories"
+                        android:layout_width="match_parent"
+                        android:layout_height="90dp"
+                        app:cardBackgroundColor="#1A1A1A"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="0dp">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/ivSlotAccessories"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerInside"
+                                android:padding="8dp"
+                                android:visibility="gone" />
+
                             <LinearLayout
+                                android:id="@+id/layoutAccessoriesEmpty"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:gravity="center"
                                 android:orientation="vertical"
                                 android:background="@drawable/bg_dashed_border">
+
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="+"
                                     android:textColor="#666666"
                                     android:textSize="20sp" />
+
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Add Accessories"
+                                    android:text="Accessories"
                                     android:textColor="#666666"
                                     android:textSize="9sp"
                                     android:gravity="center" />
+
                             </LinearLayout>
-                        </androidx.cardview.widget.CardView>
 
-                    </LinearLayout>
+                            <View
+                                android:id="@+id/ringSlotAccessories"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/bg_slot_active"
+                                android:visibility="gone" />
 
-                    <!-- Shoes slot -->
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/slotShoes"
-                        android:layout_width="match_parent"
-                        android:layout_height="90dp"
-                        android:layout_marginTop="6dp"
-                        app:cardBackgroundColor="#2A2A2A"
-                        app:cardCornerRadius="10dp">
-                        <ImageView
-                            android:id="@+id/ivSlotShoes"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/img_post3" />
+                        </FrameLayout>
                     </androidx.cardview.widget.CardView>
 
                 </LinearLayout>
 
-                <!-- RIGHT: Suggest Outfit column -->
+                <!-- Right column: Bottom + Shoes -->
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Suggest Outfit"
-                        android:textColor="#AAAAAA"
-                        android:textSize="11sp"
-                        android:layout_marginBottom="8dp" />
-
-                    <!-- Suggested item 1 -->
-                    <FrameLayout
+                    <!-- Bottom slot -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/slotBottom"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="6dp">
+                        android:layout_height="130dp"
+                        android:layout_marginBottom="6dp"
+                        app:cardBackgroundColor="#2A2A2A"
+                        app:cardCornerRadius="12dp">
 
-                        <androidx.cardview.widget.CardView
+                        <FrameLayout
                             android:layout_width="match_parent"
-                            android:layout_height="120dp"
-                            app:cardBackgroundColor="#2A2A2A"
-                            app:cardCornerRadius="10dp">
+                            android:layout_height="match_parent">
+
                             <ImageView
-                                android:id="@+id/ivSuggest1"
+                                android:id="@+id/ivSlotBottom"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/img_post4" />
-                        </androidx.cardview.widget.CardView>
+                                android:scaleType="centerInside"
+                                android:padding="8dp"
+                                android:src="@drawable/relaxedpants" />
 
-                        <!-- Add button overlay -->
-                        <ImageView
-                            android:id="@+id/ivAddSuggest1"
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"
-                            android:layout_gravity="end|bottom"
-                            android:layout_margin="6dp"
-                            android:src="@drawable/ic_add_circle"
-                            android:background="#CC000000"
-                            app:tint="#FFFFFF" />
-                    </FrameLayout>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:background="#99000000"
+                                android:gravity="center"
+                                android:padding="4dp"
+                                android:text="BOTTOM"
+                                android:textColor="#AAAAAA"
+                                android:textSize="8sp"
+                                android:letterSpacing="0.1" />
 
-                    <!-- Suggested item 2 -->
-                    <FrameLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="6dp">
-
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            app:cardBackgroundColor="#2A2A2A"
-                            app:cardCornerRadius="10dp">
-                            <ImageView
-                                android:id="@+id/ivSuggest2"
+                            <View
+                                android:id="@+id/ringSlotBottom"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/img_post5" />
-                        </androidx.cardview.widget.CardView>
+                                android:background="@drawable/bg_slot_active"
+                                android:visibility="gone" />
 
-                        <ImageView
-                            android:id="@+id/ivAddSuggest2"
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"
-                            android:layout_gravity="end|bottom"
-                            android:layout_margin="6dp"
-                            android:src="@drawable/ic_add_circle"
-                            android:background="#CC000000"
-                            app:tint="#FFFFFF" />
-                    </FrameLayout>
+                        </FrameLayout>
+                    </androidx.cardview.widget.CardView>
 
-                    <!-- Suggested item 3 -->
-                    <FrameLayout
+                    <!-- Shoes slot -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/slotShoes"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="90dp"
+                        app:cardBackgroundColor="#2A2A2A"
+                        app:cardCornerRadius="12dp">
 
-                        <androidx.cardview.widget.CardView
+                        <FrameLayout
                             android:layout_width="match_parent"
-                            android:layout_height="90dp"
-                            app:cardBackgroundColor="#2A2A2A"
-                            app:cardCornerRadius="10dp">
+                            android:layout_height="match_parent">
+
                             <ImageView
-                                android:id="@+id/ivSuggest3"
+                                android:id="@+id/ivSlotShoes"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/img_post6" />
-                        </androidx.cardview.widget.CardView>
+                                android:scaleType="centerInside"
+                                android:padding="8dp"
+                                android:src="@drawable/airforce" />
 
-                        <ImageView
-                            android:id="@+id/ivAddSuggest3"
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"
-                            android:layout_gravity="end|bottom"
-                            android:layout_margin="6dp"
-                            android:src="@drawable/ic_add_circle"
-                            android:background="#CC000000"
-                            app:tint="#FFFFFF" />
-                    </FrameLayout>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:background="#99000000"
+                                android:gravity="center"
+                                android:padding="4dp"
+                                android:text="SHOES"
+                                android:textColor="#AAAAAA"
+                                android:textSize="8sp"
+                                android:letterSpacing="0.1" />
+
+                            <View
+                                android:id="@+id/ringSlotShoes"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/bg_slot_active"
+                                android:visibility="gone" />
+
+                        </FrameLayout>
+                    </androidx.cardview.widget.CardView>
 
                 </LinearLayout>
 
@@ -307,7 +361,7 @@
                     android:layout_height="48dp"
                     android:layout_weight="1"
                     android:layout_marginEnd="8dp"
-                    android:text="Save"
+                    android:text="Save Outfit"
                     android:textColor="#121212"
                     android:textStyle="bold"
                     app:backgroundTint="#FFFFFF"
@@ -327,7 +381,7 @@
 
             </LinearLayout>
 
-            <!-- Add From Closet label -->
+            <!-- Add From Closet -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -337,7 +391,63 @@
                 android:textStyle="bold"
                 android:layout_marginBottom="10dp" />
 
-            <!-- Closet items grid -->
+            <!-- Slot filter tabs -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:layout_marginBottom="10dp">
+
+                <LinearLayout
+                    android:id="@+id/llSlotFilter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView android:id="@+id/tvFilterAll"
+                        android:layout_width="wrap_content" android:layout_height="30dp"
+                        android:layout_marginEnd="8dp" android:gravity="center"
+                        android:paddingStart="14dp" android:paddingEnd="14dp"
+                        android:text="All" android:textSize="12sp"
+                        android:textColor="#000000" android:textStyle="bold"
+                        android:background="@drawable/bg_category_selected" />
+
+                    <TextView android:id="@+id/tvFilterTops"
+                        android:layout_width="wrap_content" android:layout_height="30dp"
+                        android:layout_marginEnd="8dp" android:gravity="center"
+                        android:paddingStart="14dp" android:paddingEnd="14dp"
+                        android:text="Tops" android:textSize="12sp"
+                        android:textColor="#AAAAAA"
+                        android:background="@drawable/bg_category_unselected" />
+
+                    <TextView android:id="@+id/tvFilterBottoms"
+                        android:layout_width="wrap_content" android:layout_height="30dp"
+                        android:layout_marginEnd="8dp" android:gravity="center"
+                        android:paddingStart="14dp" android:paddingEnd="14dp"
+                        android:text="Bottoms" android:textSize="12sp"
+                        android:textColor="#AAAAAA"
+                        android:background="@drawable/bg_category_unselected" />
+
+                    <TextView android:id="@+id/tvFilterShoes"
+                        android:layout_width="wrap_content" android:layout_height="30dp"
+                        android:layout_marginEnd="8dp" android:gravity="center"
+                        android:paddingStart="14dp" android:paddingEnd="14dp"
+                        android:text="Shoes" android:textSize="12sp"
+                        android:textColor="#AAAAAA"
+                        android:background="@drawable/bg_category_unselected" />
+
+                    <TextView android:id="@+id/tvFilterAccessories"
+                        android:layout_width="wrap_content" android:layout_height="30dp"
+                        android:gravity="center"
+                        android:paddingStart="14dp" android:paddingEnd="14dp"
+                        android:text="Accessories" android:textSize="12sp"
+                        android:textColor="#AAAAAA"
+                        android:background="@drawable/bg_category_unselected" />
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- Closet grid -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvClosetForCanvas"
                 android:layout_width="match_parent"
