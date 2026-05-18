@@ -102,36 +102,4 @@ class ClosetActivity : AppCompatActivity() {
             overridePendingTransition(0, 0)
         }
     }
-
-    // setupBottomNav replaced by BottomNavManager
-    private fun setupBottomNavOLD() {
-        findViewById<BottomNavigationView>(R.id.bottomNav).apply {
-            selectedItemId = R.id.nav_closet
-            NavAvatarHelper.setCircularAvatar(this, resources, R.drawable.usertop1)
-            setOnItemSelectedListener { item ->
-                when (item.itemId) {
-                    R.id.nav_home -> {
-                        startActivity(Intent(this@ClosetActivity, HomeActivity::class.java))
-                        overridePendingTransition(0, 0)
-                        finish()
-                        true
-                    }
-                    R.id.nav_closet -> true
-                    R.id.nav_outfits -> {
-                        startActivity(Intent(this@ClosetActivity, OutfitsActivity::class.java))
-                        overridePendingTransition(0, 0)
-                        finish()
-                        true
-                    }
-                    R.id.nav_profile -> {
-                        startActivity(Intent(this@ClosetActivity, ProfileActivity::class.java))
-                        overridePendingTransition(0, 0)
-                        finish()
-                        true
-                    }
-                    else -> false
-                }
-            }
-        }
-    }
 }

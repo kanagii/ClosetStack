@@ -18,9 +18,11 @@ object BottomNavManager {
 
     fun setup(
         activity: Activity,
-        currentScreen: NavScreen,
-        avatarRes: Int = R.drawable.usertop1
+        currentScreen: NavScreen
     ) {
+        val profile = ProfileRepository.loadProfile(activity)
+        val avatarRes = profile.avatarRes
+
         val navHome    = activity.findViewById<LinearLayout>(R.id.navHome)
         val navCloset  = activity.findViewById<LinearLayout>(R.id.navCloset)
         val navOutfits = activity.findViewById<LinearLayout>(R.id.navOutfits)
