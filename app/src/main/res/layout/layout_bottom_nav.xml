@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/customBottomNav"
+    android:layout_width="match_parent"
+    android:layout_height="64dp"
+    android:orientation="horizontal"
+    android:background="@drawable/bg_bottom_nav"
+    android:paddingStart="8dp"
+    android:paddingEnd="8dp"
+    android:gravity="center_vertical"
+    android:elevation="12dp">
+
+    <!-- Home -->
+    <LinearLayout
+        android:id="@+id/navHome"
+        android:layout_width="0dp"
+        android:layout_height="46dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/ivNavHome"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:src="@drawable/ic_home"
+            app:tint="@color/nav_icon_selected" />
+
+    </LinearLayout>
+
+    <!-- Closet -->
+    <LinearLayout
+        android:id="@+id/navCloset"
+        android:layout_width="0dp"
+        android:layout_height="46dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/ivNavCloset"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:src="@drawable/ic_closet"
+            app:tint="@color/nav_icon_unselected" />
+
+    </LinearLayout>
+
+    <!-- Outfits (hanger) - center, slightly bigger -->
+    <LinearLayout
+        android:id="@+id/navOutfits"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/ivNavOutfits"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_hanger"
+            app:tint="@color/nav_icon_unselected" />
+
+    </LinearLayout>
+
+    <!-- Profile -->
+    <LinearLayout
+        android:id="@+id/navProfile"
+        android:layout_width="0dp"
+        android:layout_height="46dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/ivNavProfile"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@drawable/usertop1"
+            android:scaleType="centerCrop"
+            android:background="@drawable/bg_nav_avatar_unselected" />
+
+    </LinearLayout>
+
+</LinearLayout>

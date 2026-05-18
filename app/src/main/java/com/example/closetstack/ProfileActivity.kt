@@ -15,12 +15,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.tabs.TabLayout
@@ -28,7 +26,6 @@ import com.google.android.material.tabs.TabLayoutMediator
 
 class ProfileActivity : AppCompatActivity() {
 
-    // Avatar resource used for both profile and nav icon
     private val avatarRes = R.drawable.usertop1
 
     private val postImages = listOf(
@@ -56,7 +53,7 @@ class ProfileActivity : AppCompatActivity() {
         setupViewPager()
         setupEditProfile()
         setupSettings()
-        setupBottomNav()
+        BottomNavManager.setup(this, NavScreen.PROFILE, avatarRes)
     }
 
     private fun setupViewPager() {
@@ -64,25 +61,14 @@ class ProfileActivity : AppCompatActivity() {
         val tabLayout = findViewById<TabLayout>(R.id.profileTabLayout)
 
         viewPager.adapter = object : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
             override fun getItemCount() = 2
             override fun getItemViewType(position: Int) = position
 
             override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-                return when (viewType) {
-                    0 -> {
-                        // OUTFITS tab: rows of 3 posts
-                        val view = LayoutInflater.from(parent.context)
-                            .inflate(R.layout.fragment_profile_outfits, parent, false)
-                        object : RecyclerView.ViewHolder(view) {}
-                    }
-                    else -> {
-                        // INSPO tab: staggered grid
-                        val view = LayoutInflater.from(parent.context)
-                            .inflate(R.layout.fragment_profile_inspo, parent, false)
-                        object : RecyclerView.ViewHolder(view) {}
-                    }
-                }
+                val layoutId = if (viewType == 0) R.layout.fragment_profile_outfits
+                else R.layout.fragment_profile_inspo
+                val view = LayoutInflater.from(parent.context).inflate(layoutId, parent, false)
+                return object : RecyclerView.ViewHolder(view) {}
             }
 
             override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -108,81 +94,21 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun setupEditProfile() {
         findViewById<MaterialButton>(R.id.btnEditProfile).setOnClickListener {
-            showEditProfileSheet()
+            val sheet = BottomSheetDialog(this)
+            val view = layoutInflater.inflate(R.layout.bottom_sheet_edit_profile, null)
+            view.findViewById<View>(R.id.ivEditBack).setOnClickListener { sheet.dismiss() }
+            view.findViewById<MaterialButton>(R.id.btnSaveProfile).setOnClickListener {
+                Toast.makeText(this, "Profile saved! (coming soon)", Toast.LENGTH_SHORT).show()
+                sheet.dismiss()
+            }
+            sheet.setContentView(view)
+            sheet.show()
         }
-    }
-
-    private fun showEditProfileSheet() {
-        val sheet = BottomSheetDialog(this)
-        val view = layoutInflater.inflate(R.layout.bottom_sheet_edit_profile, null)
-        view.findViewById<View>(R.id.ivEditBack).setOnClickListener { sheet.dismiss() }
-        view.findViewById<MaterialButton>(R.id.btnSaveProfile).setOnClickListener {
-            Toast.makeText(this, "Profile saved! (coming soon)", Toast.LENGTH_SHORT).show()
-            sheet.dismiss()
-        }
-        sheet.setContentView(view)
-        sheet.show()
     }
 
     private fun setupSettings() {
         findViewById<ImageView>(R.id.ivSettings).setOnClickListener {
             Toast.makeText(this, "Settings coming soon!", Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    private fun setupBottomNav() {
-        val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNav)
-
-        // Set circular profile picture as the profile nav icon
-        setCircularNavIcon(bottomNav)
-
-        bottomNav.selectedItemId = R.id.nav_profile
-        bottomNav.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.nav_home -> {
-                    startActivity(Intent(this, HomeActivity::class.java))
-                    overridePendingTransition(0, 0)
-                    finish()
-                    true
-                }
-                R.id.nav_closet -> {
-                    startActivity(Intent(this, ClosetActivity::class.java))
-                    overridePendingTransition(0, 0)
-                    finish()
-                    true
-                }
-                R.id.nav_outfits -> {
-                    startActivity(Intent(this, OutfitsActivity::class.java))
-                    overridePendingTransition(0, 0)
-                    finish()
-                    true
-                }
-                R.id.nav_profile -> true
-                else -> false
-            }
-        }
-    }
-
-    // Convert avatar drawable to circular bitmap and set as nav icon
-    private fun setCircularNavIcon(bottomNav: BottomNavigationView) {
-        try {
-            val originalBitmap = BitmapFactory.decodeResource(resources, avatarRes)
-            val size = resources.getDimensionPixelSize(android.R.dimen.app_icon_size)
-            val scaled = Bitmap.createScaledBitmap(originalBitmap, size, size, true)
-
-            val output = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888)
-            val canvas = Canvas(output)
-            val paint = Paint(Paint.ANTI_ALIAS_FLAG)
-            val shader = BitmapShader(scaled, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP)
-            paint.shader = shader
-            val radius = size / 2f
-            canvas.drawCircle(radius, radius, radius, paint)
-
-            val circularDrawable = BitmapDrawable(resources, output)
-            val menu = bottomNav.menu
-            menu.findItem(R.id.nav_profile)?.icon = circularDrawable
-        } catch (e: Exception) {
-            // Fallback to default icon if anything fails
         }
     }
 }

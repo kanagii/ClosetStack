@@ -123,14 +123,14 @@
                             android:id="@+id/ivUser1"
                             android:layout_width="56dp"
                             android:layout_height="56dp"
-                            android:src="@drawable/usertop1"
+                            android:src="@drawable/img_user1"
                             android:scaleType="centerCrop"
                             android:background="@drawable/bg_story_ring" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="strt_apoy"
+                            android:text="My Style"
                             android:textColor="#AAAAAA"
                             android:textSize="10sp"
                             android:gravity="center"
@@ -150,14 +150,14 @@
                             android:id="@+id/ivUser2"
                             android:layout_width="56dp"
                             android:layout_height="56dp"
-                            android:src="@drawable/usertop2"
+                            android:src="@drawable/img_user2"
                             android:scaleType="centerCrop"
                             android:background="@drawable/bg_story_ring" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="bipoygaming"
+                            android:text="shoppingg"
                             android:textColor="#AAAAAA"
                             android:textSize="10sp"
                             android:gravity="center"
@@ -177,14 +177,14 @@
                             android:id="@+id/ivUser3"
                             android:layout_width="56dp"
                             android:layout_height="56dp"
-                            android:src="@drawable/usertop3"
+                            android:src="@drawable/img_user3"
                             android:scaleType="centerCrop"
                             android:background="@drawable/bg_story_ring" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="boyHipak29"
+                            android:text="DropfitBCS"
                             android:textColor="#AAAAAA"
                             android:textSize="10sp"
                             android:gravity="center"
@@ -204,14 +204,14 @@
                             android:id="@+id/ivUser4"
                             android:layout_width="56dp"
                             android:layout_height="56dp"
-                            android:src="@drawable/usertop4"
+                            android:src="@drawable/img_user4"
                             android:scaleType="centerCrop"
                             android:background="@drawable/bg_story_ring" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="AyanoKoji"
+                            android:text="djamming"
                             android:textColor="#AAAAAA"
                             android:textSize="10sp"
                             android:gravity="center"
@@ -231,14 +231,14 @@
                             android:id="@+id/ivUser5"
                             android:layout_width="56dp"
                             android:layout_height="56dp"
-                            android:src="@drawable/usertop5"
+                            android:src="@drawable/img_user5"
                             android:scaleType="centerCrop"
                             android:background="@drawable/bg_story_ring" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="Erosyonz"
+                            android:text="Adam Marc"
                             android:textColor="#AAAAAA"
                             android:textSize="10sp"
                             android:gravity="center"
@@ -258,14 +258,14 @@
                             android:id="@+id/ivUser6"
                             android:layout_width="56dp"
                             android:layout_height="56dp"
-                            android:src="@drawable/usertop6"
+                            android:src="@drawable/img_user6"
                             android:scaleType="centerCrop"
                             android:background="@drawable/bg_story_ring" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="Andre Pham"
+                            android:text="KyleRoss"
                             android:textColor="#AAAAAA"
                             android:textSize="10sp"
                             android:gravity="center"
@@ -349,16 +349,11 @@
         tools:listitem="@layout/item_post" />
 
     <!-- Bottom Navigation Bar -->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNav"
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:layout_gravity="bottom"
-        android:background="#1E1E1E"
-        app:itemIconTint="@drawable/nav_item_color"
-        app:itemTextColor="@drawable/nav_item_color"
-        app:labelVisibilityMode="unlabeled"
-        app:itemIconSize="28dp"
-        app:menu="@menu/bottom_nav_menu" />
+    <include layout="@layout/layout_bottom_nav" android:layout_width="match_parent" android:layout_height="64dp" android:layout_gravity="bottom" />
+    android:id="@+id/bottomNav"
+    android:layout_width="match_parent"
+    android:layout_height="64dp"
+    android:layout_gravity="bottom"
+    android:background="#1E1E1E"
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

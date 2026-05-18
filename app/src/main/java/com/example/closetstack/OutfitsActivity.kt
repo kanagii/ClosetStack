@@ -124,33 +124,8 @@ class OutfitsActivity : AppCompatActivity() {
     }
 
     private fun setupBottomNav() {
-        findViewById<BottomNavigationView>(R.id.bottomNav).apply {
-            selectedItemId = R.id.nav_outfits
-            NavAvatarHelper.setCircularAvatar(this, resources, R.drawable.usertop1)
-            setOnItemSelectedListener { item ->
-                when (item.itemId) {
-                    R.id.nav_home -> {
-                        startActivity(Intent(this@OutfitsActivity, HomeActivity::class.java))
-                        overridePendingTransition(0, 0)
-                        finish()
-                        true
-                    }
-                    R.id.nav_closet -> {
-                        startActivity(Intent(this@OutfitsActivity, ClosetActivity::class.java))
-                        overridePendingTransition(0, 0)
-                        finish()
-                        true
-                    }
-                    R.id.nav_outfits -> true
-                    R.id.nav_profile -> {
-                        startActivity(Intent(this@OutfitsActivity, ProfileActivity::class.java))
-                        overridePendingTransition(0, 0)
-                        finish()
-                        true
-                    }
-                    else -> false
-                }
-            }
-        }
+        BottomNavManager.setup(this, NavScreen.OUTFITS)
     }
+
+
 }

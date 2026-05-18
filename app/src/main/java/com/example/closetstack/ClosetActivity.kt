@@ -38,8 +38,8 @@ class ClosetActivity : AppCompatActivity() {
 
         setupCategoryViews()
         setupRecyclerView()
-        setupBottomNav()
         setupAddButton()
+        BottomNavManager.setup(this, NavScreen.CLOSET)
     }
 
     private fun setupCategoryViews() {
@@ -103,7 +103,8 @@ class ClosetActivity : AppCompatActivity() {
         }
     }
 
-    private fun setupBottomNav() {
+    // setupBottomNav replaced by BottomNavManager
+    private fun setupBottomNavOLD() {
         findViewById<BottomNavigationView>(R.id.bottomNav).apply {
             selectedItemId = R.id.nav_closet
             NavAvatarHelper.setCircularAvatar(this, resources, R.drawable.usertop1)

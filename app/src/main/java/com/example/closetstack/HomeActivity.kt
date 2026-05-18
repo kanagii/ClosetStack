@@ -1,6 +1,5 @@
 package com.example.closetstack
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
@@ -13,7 +12,6 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var adapter: PostAdapter
     private var currentTab = "all"
 
-    // All posts pool
     private val allPosts = listOf(
         Post(username = "Justin Nabunturan", description = "Lakers in game 2", caption = "Average Rating: 4.5", imageRes = R.drawable.img_post1, avatarRes = R.drawable.img_user1, timestamp = "2h ago", feedType = "all"),
         Post(username = "Jerome Batumbakal", description = "Street core fits only", caption = "Average Rating: 4.8", imageRes = R.drawable.img_post2, avatarRes = R.drawable.img_user2, timestamp = "4h ago", feedType = "all"),
@@ -35,7 +33,7 @@ class HomeActivity : AppCompatActivity() {
 
         setupPostsFeed()
         setupFeedTabs()
-        setupBottomNav()
+        BottomNavManager.setup(this, NavScreen.HOME)
     }
 
     private fun setupPostsFeed() {
@@ -43,9 +41,7 @@ class HomeActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         adapter = PostAdapter(
             getFilteredPosts("all"),
-            onSaveClick = { post ->
-                Toast.makeText(this, "Save feature coming soon!", Toast.LENGTH_SHORT).show()
-            },
+            onSaveClick = { Toast.makeText(this, "Save feature coming soon!", Toast.LENGTH_SHORT).show() },
             onRatingChanged = { post, rating ->
                 Toast.makeText(this, "You rated ${post.username}'s fit $rating ⭐", Toast.LENGTH_SHORT).show()
             }
@@ -60,13 +56,10 @@ class HomeActivity : AppCompatActivity() {
 
         fun selectTab(tab: String) {
             currentTab = tab
-            // Reset all
             listOf(tvFollowing, tvAll, tvFollower).forEach {
                 it.setTextColor(0xFF888888.toInt())
-                it.textSize = 13f
                 it.paint.isFakeBoldText = false
             }
-            // Highlight selected
             val selected = when (tab) {
                 "following" -> tvFollowing
                 "follower" -> tvFollower
@@ -74,50 +67,15 @@ class HomeActivity : AppCompatActivity() {
             }
             selected.setTextColor(0xFFFFFFFF.toInt())
             selected.paint.isFakeBoldText = true
-
-            // Update feed
             adapter.updatePosts(getFilteredPosts(tab))
         }
 
         tvFollowing.setOnClickListener { selectTab("following") }
         tvAll.setOnClickListener { selectTab("all") }
         tvFollower.setOnClickListener { selectTab("follower") }
-
-        // Default: All is selected
         selectTab("all")
     }
 
-    private fun getFilteredPosts(tab: String): List<Post> {
-        return if (tab == "all") allPosts
-        else allPosts.filter { it.feedType == tab }
-    }
-
-    private fun setupBottomNav() {
-        val bottomNav = findViewById<com.google.android.material.bottomnavigation.BottomNavigationView>(R.id.bottomNav)
-        NavAvatarHelper.setCircularAvatar(bottomNav, resources, R.drawable.usertop1)
-        bottomNav.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.nav_home -> true
-                R.id.nav_closet -> {
-                    startActivity(Intent(this, ClosetActivity::class.java))
-                    overridePendingTransition(0, 0)
-                    finish()
-                    true
-                }
-                R.id.nav_outfits -> {
-                    startActivity(Intent(this, OutfitsActivity::class.java))
-                    overridePendingTransition(0, 0)
-                    finish()
-                    true
-                }
-                R.id.nav_profile -> {
-                    startActivity(Intent(this, ProfileActivity::class.java))
-                    overridePendingTransition(0, 0)
-                    finish()
-                    true
-                }
-                else -> false
-            }
-        }
-    }
+    private fun getFilteredPosts(tab: String): List<Post> =
+        if (tab == "all") allPosts else allPosts.filter { it.feedType == tab }
 }

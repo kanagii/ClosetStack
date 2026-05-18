@@ -53,7 +53,7 @@ class AddItemActivity : AppCompatActivity() {
         setupColorSelector()
         setupPhotoButtons()
         setupSaveButton()
-        setupBottomNav()
+        BottomNavManager.setup(this, NavScreen.CLOSET)
     }
 
     private fun dp(value: Int): Int =
@@ -254,6 +254,7 @@ class AddItemActivity : AppCompatActivity() {
     private fun setupBottomNav() {
         findViewById<BottomNavigationView>(R.id.bottomNav).apply {
             selectedItemId = R.id.nav_closet
+            NavAvatarHelper.setCircularAvatar(this, resources, R.drawable.usertop1)
             setOnItemSelectedListener { item ->
                 when (item.itemId) {
                     R.id.nav_home -> {
@@ -269,8 +270,9 @@ class AddItemActivity : AppCompatActivity() {
                         true
                     }
                     R.id.nav_outfits -> {
+                        startActivity(Intent(this@AddItemActivity, OutfitsActivity::class.java))
                         Toast.makeText(this@AddItemActivity, "Outfits coming soon!", Toast.LENGTH_SHORT).show()
-                        false
+                        true
                     }
                     R.id.nav_profile -> {
                         startActivity(Intent(this@AddItemActivity, ProfileActivity::class.java))
