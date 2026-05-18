@@ -68,15 +68,43 @@ class AddItemActivity : AppCompatActivity() {
 
     private fun setupSpinners() {
         val categories = listOf("tops", "bottoms", "outer", "accessories", "shoes")
-        val subcategories = listOf("t-shirt", "polo", "blouse", "hoodie", "jacket", "pants", "skirt", "shorts")
+
+        // Subcategories mapped per category
+        val subcategoryMap = mapOf(
+            "tops"        to listOf("t-shirt", "polo", "blouse", "tank top", "hoodie", "sweater", "crop top"),
+            "bottoms"     to listOf("jeans", "pants", "shorts", "skirt", "chino", "leggings", "joggers"),
+            "outer"       to listOf("jacket", "coat", "blazer", "cardigan", "windbreaker", "puffer"),
+            "accessories" to listOf("cap", "hat", "bag", "belt", "watch", "sunglasses", "scarf", "jewelry"),
+            "shoes"       to listOf("sneakers", "boots", "sandals", "loafers", "heels", "slip-ons", "oxfords")
+        )
+
+        val spinnerCategory    = findViewById<AppCompatSpinner>(R.id.spinnerCategory)
+        val spinnerSubcategory = findViewById<AppCompatSpinner>(R.id.spinnerSubcategory)
 
         val catAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, categories)
         catAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        findViewById<AppCompatSpinner>(R.id.spinnerCategory).adapter = catAdapter
+        spinnerCategory.adapter = catAdapter
 
-        val subAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, subcategories)
-        subAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        findViewById<AppCompatSpinner>(R.id.spinnerSubcategory).adapter = subAdapter
+        // Update subcategory spinner whenever category changes
+        fun updateSubcategories(category: String) {
+            val subs = subcategoryMap[category] ?: emptyList()
+            val subAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, subs)
+            subAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinnerSubcategory.adapter = subAdapter
+        }
+
+        // Initialize with first category
+        updateSubcategories(categories[0])
+
+        spinnerCategory.onItemSelectedListener = object : android.widget.AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: android.widget.AdapterView<*>, view: android.view.View?,
+                position: Int, id: Long
+            ) {
+                updateSubcategories(categories[position])
+            }
+            override fun onNothingSelected(parent: android.widget.AdapterView<*>) {}
+        }
     }
 
     private fun setupAutocomplete() {
@@ -102,12 +130,12 @@ class AddItemActivity : AppCompatActivity() {
         val etBrand = findViewById<AutoCompleteTextView>(R.id.etBrand)
         etBrand.setAdapter(brandAdapter)
         etBrand.setTextColor(0xFFFFFFFF.toInt())
-        etBrand.setHintTextColor(0xFF555555.toInt())
+        etBrand.setHintTextColor(0xFF888899.toInt())
 
         // Tags autocomplete
         val etTags = findViewById<AutoCompleteTextView>(R.id.etTags)
         etTags.setTextColor(0xFFFFFFFF.toInt())
-        etTags.setHintTextColor(0xFF555555.toInt())
+        etTags.setHintTextColor(0xFF888899.toInt())
 
         val tagAdapter = TagAutoCompleteAdapter(this, tagList, etTags)
         etTags.setAdapter(tagAdapter)
@@ -248,41 +276,6 @@ class AddItemActivity : AppCompatActivity() {
     private fun setupSaveButton() {
         findViewById<MaterialButton>(R.id.btnSaveItem).setOnClickListener {
             Toast.makeText(this, "Item saved! (coming soon)", Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    private fun setupBottomNav() {
-        findViewById<BottomNavigationView>(R.id.bottomNav).apply {
-            selectedItemId = R.id.nav_closet
-            NavAvatarHelper.setCircularAvatar(this, resources, R.drawable.usertop1)
-            setOnItemSelectedListener { item ->
-                when (item.itemId) {
-                    R.id.nav_home -> {
-                        startActivity(Intent(this@AddItemActivity, HomeActivity::class.java))
-                        overridePendingTransition(0, 0)
-                        finish()
-                        true
-                    }
-                    R.id.nav_closet -> {
-                        startActivity(Intent(this@AddItemActivity, ClosetActivity::class.java))
-                        overridePendingTransition(0, 0)
-                        finish()
-                        true
-                    }
-                    R.id.nav_outfits -> {
-                        startActivity(Intent(this@AddItemActivity, OutfitsActivity::class.java))
-                        Toast.makeText(this@AddItemActivity, "Outfits coming soon!", Toast.LENGTH_SHORT).show()
-                        true
-                    }
-                    R.id.nav_profile -> {
-                        startActivity(Intent(this@AddItemActivity, ProfileActivity::class.java))
-                        overridePendingTransition(0, 0)
-                        finish()
-                        true
-                    }
-                    else -> false
-                }
-            }
         }
     }
 }
