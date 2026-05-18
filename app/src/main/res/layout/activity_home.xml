@@ -130,7 +130,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="My Style"
+                            android:text="Justin Nabunturan"
                             android:textColor="#AAAAAA"
                             android:textSize="10sp"
                             android:gravity="center"
@@ -157,7 +157,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="shoppingg"
+                            android:text="gwen"
                             android:textColor="#AAAAAA"
                             android:textSize="10sp"
                             android:gravity="center"
@@ -231,14 +231,14 @@
                             android:id="@+id/ivUser5"
                             android:layout_width="56dp"
                             android:layout_height="56dp"
-                            android:src="@drawable/img_user5"
+                            android:src="@drawable/usertop3"
                             android:scaleType="centerCrop"
                             android:background="@drawable/bg_story_ring" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="Adam Marc"
+                            android:text="boyHipak29"
                             android:textColor="#AAAAAA"
                             android:textSize="10sp"
                             android:gravity="center"
@@ -258,14 +258,66 @@
                             android:id="@+id/ivUser6"
                             android:layout_width="56dp"
                             android:layout_height="56dp"
-                            android:src="@drawable/img_user6"
+                            android:src="@drawable/usertop4"
                             android:scaleType="centerCrop"
                             android:background="@drawable/bg_story_ring" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="KyleRoss"
+                            android:text="AyanoKoji"
+                            android:textColor="#AAAAAA"
+                            android:textSize="10sp"
+                            android:gravity="center"
+                            android:maxWidth="60dp"
+                            android:ellipsize="end"
+                            android:maxLines="1"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_marginEnd="14dp">
+                        <ImageView
+                            android:id="@+id/ivUser7"
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:src="@drawable/usertop5"
+                            android:scaleType="centerCrop"
+                            android:background="@drawable/bg_story_ring" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Erosyonz"
+                            android:textColor="#AAAAAA"
+                            android:textSize="10sp"
+                            android:gravity="center"
+                            android:maxWidth="60dp"
+                            android:ellipsize="end"
+                            android:maxLines="1"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_marginEnd="14dp">
+                        <ImageView
+                            android:id="@+id/ivUser8"
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:src="@drawable/usertop6"
+                            android:scaleType="centerCrop"
+                            android:background="@drawable/bg_story_ring" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Andre Pham"
                             android:textColor="#AAAAAA"
                             android:textSize="10sp"
                             android:gravity="center"

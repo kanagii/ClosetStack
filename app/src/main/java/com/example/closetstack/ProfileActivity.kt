@@ -1,18 +1,12 @@
 package com.example.closetstack
 
-import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.BitmapShader
-import android.graphics.Canvas
-import android.graphics.Paint
-import android.graphics.Shader
-import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.ImageView
+import android.widget.RatingBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,7 +20,8 @@ import com.google.android.material.tabs.TabLayoutMediator
 
 class ProfileActivity : AppCompatActivity() {
 
-    private val avatarRes = R.drawable.usertop1
+    // Single source of truth for the user's profile
+    private lateinit var profile: UserProfile
 
     private val postImages = listOf(
         R.drawable.img_post1, R.drawable.img_post2, R.drawable.img_post3,
@@ -50,10 +45,21 @@ class ProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
+        // Load profile from persistence
+        profile = ProfileRepository.loadProfile(this)
+
+        bindProfile()
         setupViewPager()
         setupEditProfile()
         setupSettings()
-        BottomNavManager.setup(this, NavScreen.PROFILE, avatarRes)
+        BottomNavManager.setup(this, NavScreen.PROFILE)
+    }
+
+    // Binds current profile data to all UI elements
+    private fun bindProfile() {
+        findViewById<TextView>(R.id.tvProfileUsername).text = profile.username
+        findViewById<TextView>(R.id.tvDisplayName).text = profile.displayName
+        findViewById<TextView>(R.id.tvBio).text = profile.bio
     }
 
     private fun setupViewPager() {
@@ -94,16 +100,60 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun setupEditProfile() {
         findViewById<MaterialButton>(R.id.btnEditProfile).setOnClickListener {
-            val sheet = BottomSheetDialog(this)
-            val view = layoutInflater.inflate(R.layout.bottom_sheet_edit_profile, null)
-            view.findViewById<View>(R.id.ivEditBack).setOnClickListener { sheet.dismiss() }
-            view.findViewById<MaterialButton>(R.id.btnSaveProfile).setOnClickListener {
-                Toast.makeText(this, "Profile saved! (coming soon)", Toast.LENGTH_SHORT).show()
-                sheet.dismiss()
-            }
-            sheet.setContentView(view)
-            sheet.show()
+            showEditProfileSheet()
         }
+    }
+
+    private fun showEditProfileSheet() {
+        val sheet = BottomSheetDialog(this)
+        val view = layoutInflater.inflate(R.layout.bottom_sheet_edit_profile, null)
+
+        // Pre-fill all fields with current profile data
+        view.findViewById<EditText>(R.id.etEditDisplayName).setText(profile.displayName)
+        view.findViewById<EditText>(R.id.etEditUsername).setText(profile.username)
+        view.findViewById<EditText>(R.id.etEditLocation).setText(profile.location)
+        view.findViewById<EditText>(R.id.etAbout).setText(profile.bio)
+        view.findViewById<EditText>(R.id.etInterests).setText(profile.interests)
+
+        view.findViewById<ImageView>(R.id.ivEditBack).setOnClickListener {
+            sheet.dismiss()
+        }
+
+        view.findViewById<MaterialButton>(R.id.btnSaveProfile).setOnClickListener {
+            val newName     = view.findViewById<EditText>(R.id.etEditDisplayName).text.toString().trim()
+            val newUsername = view.findViewById<EditText>(R.id.etEditUsername).text.toString().trim()
+            val newLocation = view.findViewById<EditText>(R.id.etEditLocation).text.toString().trim()
+            val newBio      = view.findViewById<EditText>(R.id.etAbout).text.toString().trim()
+            val newInterests = view.findViewById<EditText>(R.id.etInterests).text.toString().trim()
+
+            if (newName.isEmpty()) {
+                Toast.makeText(this, "Display name cannot be empty", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            if (newUsername.isEmpty()) {
+                Toast.makeText(this, "Username cannot be empty", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            // Update profile object
+            profile.displayName = newName
+            profile.username    = newUsername
+            profile.location    = newLocation
+            profile.bio         = newBio
+            profile.interests   = newInterests
+
+            // Persist changes
+            ProfileRepository.saveProfile(this@ProfileActivity, profile)
+
+            // Reflect changes on screen immediately
+            bindProfile()
+
+            sheet.dismiss()
+            Toast.makeText(this, "Profile updated!", Toast.LENGTH_SHORT).show()
+        }
+
+        sheet.setContentView(view)
+        sheet.show()
     }
 
     private fun setupSettings() {

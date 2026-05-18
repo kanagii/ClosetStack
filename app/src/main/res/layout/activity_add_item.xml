@@ -45,6 +45,7 @@
                 android:layout_marginStart="12dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <!-- Scrollable Content -->
@@ -126,7 +127,9 @@
                     android:text="Camera"
                     android:textSize="13sp"
                     android:textColor="#FFFFFF"
-                    app:backgroundTint="#2A2A2A"
+                    app:backgroundTint="#252535"
+                    app:strokeColor="#3A3A55"
+                    app:strokeWidth="1dp"
                     app:cornerRadius="10dp"
                     app:icon="@drawable/ic_camera_placeholder"
                     app:iconTint="#FFFFFF"
@@ -141,7 +144,9 @@
                     android:text="Gallery"
                     android:textSize="13sp"
                     android:textColor="#FFFFFF"
-                    app:backgroundTint="#2A2A2A"
+                    app:backgroundTint="#252535"
+                    app:strokeColor="#3A3A55"
+                    app:strokeWidth="1dp"
                     app:cornerRadius="10dp"
                     app:icon="@drawable/ic_gallery"
                     app:iconTint="#FFFFFF"
@@ -154,35 +159,37 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="category"
-                android:textColor="#AAAAAA"
-                android:textSize="12sp"
-                android:layout_marginBottom="6dp" />
+                android:text="CATEGORY"
+                android:textColor="#CCCCDD"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.08"
+                android:layout_marginBottom="8dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginBottom="16dp">
+                android:layout_marginBottom="20dp">
 
                 <androidx.appcompat.widget.AppCompatSpinner
                     android:id="@+id/spinnerCategory"
                     android:layout_width="0dp"
-                    android:layout_height="46dp"
+                    android:layout_height="50dp"
                     android:layout_weight="1"
                     android:layout_marginEnd="8dp"
                     android:background="@drawable/bg_input_dark"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp" />
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp" />
 
                 <androidx.appcompat.widget.AppCompatSpinner
                     android:id="@+id/spinnerSubcategory"
                     android:layout_width="0dp"
-                    android:layout_height="46dp"
+                    android:layout_height="50dp"
                     android:layout_weight="1"
                     android:background="@drawable/bg_input_dark"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp" />
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp" />
 
             </LinearLayout>
 
@@ -190,23 +197,25 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="brand"
-                android:textColor="#AAAAAA"
-                android:textSize="12sp"
-                android:layout_marginBottom="6dp" />
+                android:text="BRAND"
+                android:textColor="#CCCCDD"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.08"
+                android:layout_marginBottom="8dp" />
 
             <AutoCompleteTextView
                 android:id="@+id/etBrand"
                 android:layout_width="match_parent"
-                android:layout_height="46dp"
-                android:layout_marginBottom="16dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="20dp"
                 android:background="@drawable/bg_input_dark"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
                 android:hint="e.g. BENCH, Uniqlo"
                 android:textColor="#FFFFFF"
-                android:textColorHint="#555555"
-                android:textSize="13sp"
+                android:textColorHint="#888899"
+                android:textSize="14sp"
                 android:inputType="text"
                 android:completionThreshold="1"
                 android:dropDownHeight="200dp"
@@ -216,23 +225,25 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="tags"
-                android:textColor="#AAAAAA"
-                android:textSize="12sp"
-                android:layout_marginBottom="6dp" />
+                android:text="TAGS"
+                android:textColor="#CCCCDD"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.08"
+                android:layout_marginBottom="8dp" />
 
             <AutoCompleteTextView
                 android:id="@+id/etTags"
                 android:layout_width="match_parent"
-                android:layout_height="46dp"
+                android:layout_height="50dp"
                 android:layout_marginBottom="6dp"
                 android:background="@drawable/bg_input_dark"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
                 android:hint="e.g. casual, streetwear"
                 android:textColor="#FFFFFF"
-                android:textColorHint="#555555"
-                android:textSize="13sp"
+                android:textColorHint="#888899"
+                android:textSize="14sp"
                 android:inputType="text"
                 android:completionThreshold="1"
                 android:dropDownHeight="200dp"
@@ -242,7 +253,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="separate tags with a comma"
-                android:textColor="#555555"
+                android:textColor="#7777AA"
                 android:textSize="10sp"
                 android:layout_marginBottom="20dp" />
 
@@ -250,9 +261,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="color"
-                android:textColor="#AAAAAA"
-                android:textSize="12sp"
+                android:text="COLOR"
+                android:textColor="#CCCCDD"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.08"
                 android:layout_marginBottom="10dp" />
 
             <!-- Color Swatches Row 1 -->
@@ -354,9 +367,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="size"
-                android:textColor="#AAAAAA"
-                android:textSize="12sp"
+                android:text="SIZE"
+                android:textColor="#CCCCDD"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.08"
                 android:layout_marginBottom="10dp" />
 
             <LinearLayout
@@ -441,16 +456,11 @@
     </androidx.core.widget.NestedScrollView>
 
     <!-- Bottom Navigation Bar -->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNav"
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:layout_gravity="bottom"
-        android:background="@color/dark_navy"
-        app:itemIconTint="@drawable/nav_item_color"
-        app:itemTextColor="@drawable/nav_item_color"
-        app:labelVisibilityMode="unlabeled"
-        app:itemIconSize="28dp"
-        app:menu="@menu/bottom_nav_menu" />
+    <include layout="@layout/layout_bottom_nav" android:layout_width="match_parent" android:layout_height="64dp" android:layout_gravity="bottom" />
+    android:id="@+id/bottomNav"
+    android:layout_width="match_parent"
+    android:layout_height="64dp"
+    android:layout_gravity="bottom"
+    android:background="@color/dark_navy"
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
