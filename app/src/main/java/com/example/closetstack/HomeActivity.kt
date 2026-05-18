@@ -39,11 +39,19 @@ class HomeActivity : AppCompatActivity() {
     private fun setupPostsFeed() {
         val recyclerView = findViewById<RecyclerView>(R.id.rvPosts)
         recyclerView.layoutManager = LinearLayoutManager(this)
+
+        PostRepository.posts = allPosts  // ADD THIS
+
         adapter = PostAdapter(
             getFilteredPosts("all"),
-            onSaveClick = { Toast.makeText(this, "Save feature coming soon!", Toast.LENGTH_SHORT).show() },
+            onSaveClick = { SaveToBoardBottomSheet().show(supportFragmentManager, "SaveToBoard") },
             onRatingChanged = { post, rating ->
                 Toast.makeText(this, "You rated ${post.username}'s fit $rating ⭐", Toast.LENGTH_SHORT).show()
+            },
+            onPostClick = { _, position ->           // ADD THIS
+                val intent = android.content.Intent(this, PostDetailActivity::class.java)
+                intent.putExtra("position", position)
+                startActivity(intent)
             }
         )
         recyclerView.adapter = adapter
