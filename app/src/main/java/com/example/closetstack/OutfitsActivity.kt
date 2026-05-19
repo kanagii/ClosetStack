@@ -5,12 +5,10 @@ import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class OutfitsActivity : AppCompatActivity() {
+class OutfitsActivity : BaseActivity() {
 
     private lateinit var adapter: OutfitAdapter
     private var selectedCategory = "all"

@@ -2,9 +2,8 @@ package com.example.closetstack
 
 import android.os.Bundle
 import android.widget.ImageView
-import androidx.appcompat.app.AppCompatActivity
 
-class PostDetailActivity : AppCompatActivity() {
+class PostDetailActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

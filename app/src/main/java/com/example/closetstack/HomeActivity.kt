@@ -6,8 +6,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.core.content.ContextCompat
+import android.util.TypedValue
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : BaseActivity() {
 
     private lateinit var adapter: PostAdapter
     private var currentTab = "all"
@@ -47,7 +49,7 @@ class HomeActivity : AppCompatActivity() {
         val recyclerView = findViewById<RecyclerView>(R.id.rvPosts)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        PostRepository.posts = allPosts  // ADD THIS
+        PostRepository.posts = allPosts
 
         adapter = PostAdapter(
             getFilteredPosts("all"),
@@ -55,7 +57,7 @@ class HomeActivity : AppCompatActivity() {
             onRatingChanged = { post, rating ->
                 Toast.makeText(this, "You rated ${post.username}'s fit $rating ⭐", Toast.LENGTH_SHORT).show()
             },
-            onPostClick = { _, position ->           // ADD THIS
+            onPostClick = { _, position ->
                 val intent = android.content.Intent(this, PostDetailActivity::class.java)
                 intent.putExtra("position", position)
                 startActivity(intent)
@@ -69,10 +71,17 @@ class HomeActivity : AppCompatActivity() {
         val tvAll = findViewById<TextView>(R.id.tvAll)
         val tvFollower = findViewById<TextView>(R.id.tvFollower)
 
+        // Use theme attributes for colors
+        val typedValue = TypedValue()
+        theme.resolveAttribute(android.R.attr.textColorPrimary, typedValue, true)
+        val primaryColor = typedValue.data
+        theme.resolveAttribute(android.R.attr.textColorSecondary, typedValue, true)
+        val secondaryColor = typedValue.data
+
         fun selectTab(tab: String) {
             currentTab = tab
             listOf(tvFollowing, tvAll, tvFollower).forEach {
-                it.setTextColor(0xFF888888.toInt())
+                it.setTextColor(secondaryColor)
                 it.paint.isFakeBoldText = false
             }
             val selected = when (tab) {
@@ -80,7 +89,7 @@ class HomeActivity : AppCompatActivity() {
                 "follower" -> tvFollower
                 else -> tvAll
             }
-            selected.setTextColor(0xFFFFFFFF.toInt())
+            selected.setTextColor(primaryColor)
             selected.paint.isFakeBoldText = true
             adapter.updatePosts(getFilteredPosts(tab))
         }

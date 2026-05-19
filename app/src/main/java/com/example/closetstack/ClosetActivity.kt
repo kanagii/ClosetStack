@@ -4,12 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.animation.AnimationUtils
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class ClosetActivity : AppCompatActivity() {
+class ClosetActivity : BaseActivity() {
 
     private lateinit var adapter: ClosetAdapter
     private lateinit var recyclerView: RecyclerView

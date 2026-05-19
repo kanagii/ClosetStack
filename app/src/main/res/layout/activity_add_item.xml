@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dark_navy"
+    android:background="?android:attr/windowBackground"
     tools:context=".AddItemActivity">
 
     <!-- Top Bar -->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/dark_navy"
+        android:background="?android:attr/windowBackground"
         app:elevation="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -26,7 +26,7 @@
                 android:layout_width="28dp"
                 android:layout_height="28dp"
                 android:src="@drawable/ic_arrow_back"
-                app:tint="#FFFFFF"
+                app:tint="?android:attr/textColorPrimary"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent" />
@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="add an item"
-                android:textColor="#FFFFFF"
+                android:textColor="?android:attr/textColorPrimary"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@id/ivBack"
@@ -70,7 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
                 android:layout_marginBottom="16dp"
-                app:cardBackgroundColor="#1E1E1E"
+                app:cardBackgroundColor="?attr/colorSurfaceContainer"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="0dp">
 
@@ -93,7 +93,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text="snap it, or link it"
-                        android:textColor="#FFFFFF"
+                        android:textColor="?android:attr/textColorPrimary"
                         android:textSize="14sp"
                         android:textStyle="bold"
                         android:gravity="center" />
@@ -126,13 +126,13 @@
                     android:layout_marginEnd="8dp"
                     android:text="Camera"
                     android:textSize="13sp"
-                    android:textColor="#FFFFFF"
-                    app:backgroundTint="#252535"
-                    app:strokeColor="#3A3A55"
+                    android:textColor="?android:attr/textColorPrimary"
+                    app:backgroundTint="?attr/colorSurfaceVariant"
+                    app:strokeColor="?attr/colorPrimary"
                     app:strokeWidth="1dp"
                     app:cornerRadius="10dp"
                     app:icon="@drawable/ic_camera_placeholder"
-                    app:iconTint="#FFFFFF"
+                    app:iconTint="?android:attr/textColorPrimary"
                     app:iconSize="16dp"
                     app:iconPadding="6dp" />
 
@@ -143,13 +143,13 @@
                     android:layout_weight="1"
                     android:text="Gallery"
                     android:textSize="13sp"
-                    android:textColor="#FFFFFF"
-                    app:backgroundTint="#252535"
-                    app:strokeColor="#3A3A55"
+                    android:textColor="?android:attr/textColorPrimary"
+                    app:backgroundTint="?attr/colorSurfaceVariant"
+                    app:strokeColor="?attr/colorPrimary"
                     app:strokeWidth="1dp"
                     app:cornerRadius="10dp"
                     app:icon="@drawable/ic_gallery"
-                    app:iconTint="#FFFFFF"
+                    app:iconTint="?android:attr/textColorPrimary"
                     app:iconSize="16dp"
                     app:iconPadding="6dp" />
 
@@ -160,7 +160,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="CATEGORY"
-                android:textColor="#CCCCDD"
+                android:textColor="?android:attr/textColorSecondary"
                 android:textSize="11sp"
                 android:textStyle="bold"
                 android:letterSpacing="0.08"
@@ -198,7 +198,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="BRAND"
-                android:textColor="#CCCCDD"
+                android:textColor="?android:attr/textColorSecondary"
                 android:textSize="11sp"
                 android:textStyle="bold"
                 android:letterSpacing="0.08"
@@ -213,20 +213,20 @@
                 android:paddingStart="14dp"
                 android:paddingEnd="14dp"
                 android:hint="e.g. BENCH, Uniqlo"
-                android:textColor="#FFFFFF"
-                android:textColorHint="#888899"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textColorHint="?android:attr/textColorSecondary"
                 android:textSize="14sp"
                 android:inputType="text"
                 android:completionThreshold="1"
                 android:dropDownHeight="200dp"
-                android:popupBackground="@drawable/bg_input_dark" />
+                android:popupBackground="?attr/colorSurface" />
 
             <!-- Tags -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TAGS"
-                android:textColor="#CCCCDD"
+                android:textColor="?android:attr/textColorSecondary"
                 android:textSize="11sp"
                 android:textStyle="bold"
                 android:letterSpacing="0.08"
@@ -241,19 +241,19 @@
                 android:paddingStart="14dp"
                 android:paddingEnd="14dp"
                 android:hint="e.g. casual, streetwear"
-                android:textColor="#FFFFFF"
-                android:textColorHint="#888899"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textColorHint="?android:attr/textColorSecondary"
                 android:textSize="14sp"
                 android:inputType="text"
                 android:completionThreshold="1"
                 android:dropDownHeight="200dp"
-                android:popupBackground="@drawable/bg_input_dark" />
+                android:popupBackground="?attr/colorSurface" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="separate tags with a comma"
-                android:textColor="#7777AA"
+                android:textColor="?android:attr/textColorSecondary"
                 android:textSize="10sp"
                 android:layout_marginBottom="20dp" />
 
@@ -262,7 +262,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="COLOR"
-                android:textColor="#CCCCDD"
+                android:textColor="?android:attr/textColorSecondary"
                 android:textSize="11sp"
                 android:textStyle="bold"
                 android:letterSpacing="0.08"
@@ -368,7 +368,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="SIZE"
-                android:textColor="#CCCCDD"
+                android:textColor="?android:attr/textColorSecondary"
                 android:textSize="11sp"
                 android:textStyle="bold"
                 android:letterSpacing="0.08"
@@ -384,31 +384,31 @@
                     android:layout_width="0dp" android:layout_height="36dp"
                     android:layout_weight="1" android:layout_marginEnd="6dp"
                     android:gravity="center" android:text="XS"
-                    android:textColor="#AAAAAA" android:textSize="12sp"
+                    android:textColor="?android:attr/textColorSecondary" android:textSize="12sp"
                     android:background="@drawable/bg_category_unselected" />
                 <TextView android:id="@+id/sizeS"
                     android:layout_width="0dp" android:layout_height="36dp"
                     android:layout_weight="1" android:layout_marginEnd="6dp"
                     android:gravity="center" android:text="S"
-                    android:textColor="#AAAAAA" android:textSize="12sp"
+                    android:textColor="?android:attr/textColorSecondary" android:textSize="12sp"
                     android:background="@drawable/bg_category_unselected" />
                 <TextView android:id="@+id/sizeM"
                     android:layout_width="0dp" android:layout_height="36dp"
                     android:layout_weight="1" android:layout_marginEnd="6dp"
                     android:gravity="center" android:text="M"
-                    android:textColor="#FFFFFF" android:textSize="12sp"
+                    android:textColor="?attr/colorOnPrimary" android:textSize="12sp"
                     android:background="@drawable/bg_size_selected" />
                 <TextView android:id="@+id/sizeL"
                     android:layout_width="0dp" android:layout_height="36dp"
                     android:layout_weight="1" android:layout_marginEnd="6dp"
                     android:gravity="center" android:text="L"
-                    android:textColor="#AAAAAA" android:textSize="12sp"
+                    android:textColor="?android:attr/textColorSecondary" android:textSize="12sp"
                     android:background="@drawable/bg_category_unselected" />
                 <TextView android:id="@+id/sizeXL"
                     android:layout_width="0dp" android:layout_height="36dp"
                     android:layout_weight="1"
                     android:gravity="center" android:text="XL"
-                    android:textColor="#AAAAAA" android:textSize="12sp"
+                    android:textColor="?android:attr/textColorSecondary" android:textSize="12sp"
                     android:background="@drawable/bg_category_unselected" />
 
             </LinearLayout>
@@ -423,13 +423,13 @@
                     android:layout_width="0dp" android:layout_height="36dp"
                     android:layout_weight="1" android:layout_marginEnd="6dp"
                     android:gravity="center" android:text="XXL"
-                    android:textColor="#AAAAAA" android:textSize="12sp"
+                    android:textColor="?android:attr/textColorSecondary" android:textSize="12sp"
                     android:background="@drawable/bg_category_unselected" />
                 <TextView android:id="@+id/sizeFreeSize"
                     android:layout_width="0dp" android:layout_height="36dp"
                     android:layout_weight="2" android:layout_marginEnd="6dp"
                     android:gravity="center" android:text="Free Size"
-                    android:textColor="#AAAAAA" android:textSize="12sp"
+                    android:textColor="?android:attr/textColorSecondary" android:textSize="12sp"
                     android:background="@drawable/bg_category_unselected" />
                 <View
                     android:layout_width="0dp"
@@ -445,10 +445,10 @@
                 android:layout_height="52dp"
                 android:layout_marginBottom="16dp"
                 android:text="Save to Closet"
-                android:textColor="#121212"
+                android:textColor="?attr/colorOnPrimary"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                app:backgroundTint="#FFFFFF"
+                app:backgroundTint="?attr/colorPrimary"
                 app:cornerRadius="12dp" />
 
         </LinearLayout>
@@ -456,11 +456,11 @@
     </androidx.core.widget.NestedScrollView>
 
     <!-- Bottom Navigation Bar -->
-    <include layout="@layout/layout_bottom_nav" android:layout_width="match_parent" android:layout_height="64dp" android:layout_gravity="bottom" />
-    android:id="@+id/bottomNav"
-    android:layout_width="match_parent"
-    android:layout_height="64dp"
-    android:layout_gravity="bottom"
-    android:background="@color/dark_navy"
+    <include
+        android:id="@+id/bottomNav"
+        layout="@layout/layout_bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_gravity="bottom" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

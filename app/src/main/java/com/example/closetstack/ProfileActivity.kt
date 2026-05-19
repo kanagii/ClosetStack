@@ -1,14 +1,13 @@
 package com.example.closetstack
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
-import android.widget.RatingBar
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -18,7 +17,7 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
-class ProfileActivity : AppCompatActivity() {
+class ProfileActivity : BaseActivity() {
 
     // Single source of truth for the user's profile
     private lateinit var profile: UserProfile
@@ -178,7 +177,7 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun setupSettings() {
         findViewById<ImageView>(R.id.ivSettings).setOnClickListener {
-            Toast.makeText(this, "Settings coming soon!", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, SettingsActivity::class.java))
         }
     }
 }
