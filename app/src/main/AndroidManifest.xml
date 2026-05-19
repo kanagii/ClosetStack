@@ -37,6 +37,9 @@
             android:name=".ProfileActivity"
             android:exported="false" />
         <activity
+            android:name=".ProfileActivityTest"
+            android:exported="false" />
+        <activity
             android:name=".StyleCanvasActivity"
             android:exported="false" />
         <activity

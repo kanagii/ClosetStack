@@ -57,7 +57,7 @@
                 android:id="@+id/ivProfileAvatar"
                 android:layout_width="72dp"
                 android:layout_height="72dp"
-                android:src="@drawable/usertop1"
+                android:src="@drawable/img_user1"
                 android:scaleType="centerCrop"
                 android:background="@drawable/bg_avatar_circle"
                 app:layout_constraintStart_toStartOf="parent"
@@ -78,7 +78,7 @@
                     android:id="@+id/tvDisplayName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Vanessa Kung"
+                    android:text="Justin Nabunturan"
                     android:textColor="#FFFFFF"
                     android:textSize="15sp"
                     android:textStyle="bold" />
@@ -88,7 +88,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:text="Fashion and Styling Enthusiast"
+                    android:text="Sportswear Expert"
                     android:textColor="#AAAAAA"
                     android:textSize="12sp" />
 
@@ -208,5 +208,6 @@
 
     <!-- Bottom Navigation -->
     <include layout="@layout/layout_bottom_nav" android:layout_width="match_parent" android:layout_height="64dp" android:layout_gravity="bottom" />
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

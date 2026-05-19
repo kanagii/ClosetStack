@@ -55,10 +55,21 @@ class HomeActivity : AppCompatActivity() {
             onRatingChanged = { post, rating ->
                 Toast.makeText(this, "You rated ${post.username}'s fit $rating ⭐", Toast.LENGTH_SHORT).show()
             },
-            onPostClick = { _, position ->           // ADD THIS
-                val intent = android.content.Intent(this, PostDetailActivity::class.java)
-                intent.putExtra("position", position)
-                startActivity(intent)
+//            onPostClick = { _, position ->           // ADD THIS
+//                val intent = android.content.Intent(this, PostDetailActivity::class.java)
+//                intent.putExtra("position", position)
+//                startActivity(intent)
+//            }
+
+                    onPostClick = { post, position ->
+                if (post.avatarRes == R.drawable.img_user1) {
+                    val intent = android.content.Intent(this, ProfileActivityTest::class.java)
+                    startActivity(intent)
+                } else {
+                    val intent = android.content.Intent(this, PostDetailActivity::class.java)
+                    intent.putExtra("position", position)
+                    startActivity(intent)
+                }
             }
         )
         recyclerView.adapter = adapter
