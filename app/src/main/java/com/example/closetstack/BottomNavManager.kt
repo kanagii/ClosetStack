@@ -131,6 +131,10 @@ object BottomNavManager {
     private fun setCircularAvatar(activity: Activity, imageView: ImageView, avatarRes: Int) {
         try {
             val original = BitmapFactory.decodeResource(activity.resources, avatarRes)
+            if (original == null) {
+                imageView.setImageResource(R.drawable.ic_person)
+                return
+            }
             val size = 80
             val scaled = Bitmap.createScaledBitmap(original, size, size, true)
             val output = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888)

@@ -14,26 +14,43 @@ object ProfileRepository {
 
     fun saveProfile(context: Context, profile: UserProfile) {
         val prefs: SharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        val resName = try {
+            context.resources.getResourceEntryName(profile.avatarRes)
+        } catch (e: Exception) {
+            "usertop1"
+        }
         prefs.edit().apply {
             putString(KEY_DISPLAY_NAME, profile.displayName)
             putString(KEY_USERNAME, profile.username)
             putString(KEY_LOCATION, profile.location)
             putString(KEY_BIO, profile.bio)
             putString(KEY_INTERESTS, profile.interests)
-            putInt(KEY_AVATAR_RES, profile.avatarRes)
+            putString(KEY_AVATAR_RES, resName)
             apply()
         }
     }
 
     fun loadProfile(context: Context): UserProfile {
         val prefs: SharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        
+        // Robust resource loading: check if saved as String (name) or Int (legacy ID)
+        val savedAvatar = prefs.all[KEY_AVATAR_RES]
+        val avatarRes = when (savedAvatar) {
+            is String -> {
+                val resId = context.resources.getIdentifier(savedAvatar, "drawable", context.packageName)
+                if (resId != 0) resId else R.drawable.usertop1
+            }
+            is Int -> savedAvatar // Fallback for old installations
+            else -> R.drawable.usertop1
+        }
+
         return UserProfile(
             displayName = prefs.getString(KEY_DISPLAY_NAME, "Vanessa Kung") ?: "Vanessa Kung",
             username = prefs.getString(KEY_USERNAME, "vanessa_kung") ?: "vanessa_kung",
             location = prefs.getString(KEY_LOCATION, "Philippines") ?: "Philippines",
             bio = prefs.getString(KEY_BIO, "Fashion and Styling Enthusiast") ?: "Fashion and Styling Enthusiast",
             interests = prefs.getString(KEY_INTERESTS, "#Core  #FreeNovaJeans  #ForTheStreets\n#StreetWear  #hiphop") ?: "#Core  #FreeNovaJeans  #ForTheStreets\n#StreetWear  #hiphop",
-            avatarRes = prefs.getInt(KEY_AVATAR_RES, R.drawable.usertop1)
+            avatarRes = avatarRes
         )
     }
 }
