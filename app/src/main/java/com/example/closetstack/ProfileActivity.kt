@@ -28,12 +28,27 @@ class ProfileActivity : AppCompatActivity() {
 
     private val avatarRes = R.drawable.usertop1
 
-    private val postImages = listOf(
-        R.drawable.img_post1, R.drawable.img_post2, R.drawable.img_post3,
-        R.drawable.img_post4, R.drawable.img_post5, R.drawable.img_post6,
-        R.drawable.img_post1, R.drawable.img_post3, R.drawable.img_post5,
-        R.drawable.img_post2, R.drawable.img_post4, R.drawable.img_post6
-    )
+    private fun getProfilePostImages(): List<ProfilePostImage> {
+        val userImages = PostRepository.getUserPosts().map {
+            if (it.imageUri != null) ProfilePostImage.Uri(it.imageUri)
+            else ProfilePostImage.Res(it.imageRes)
+        }
+        val seeded = listOf(
+            ProfilePostImage.Res(R.drawable.img_post1),
+            ProfilePostImage.Res(R.drawable.img_post2),
+            ProfilePostImage.Res(R.drawable.img_post3),
+            ProfilePostImage.Res(R.drawable.img_post4),
+            ProfilePostImage.Res(R.drawable.img_post5),
+            ProfilePostImage.Res(R.drawable.img_post6),
+            ProfilePostImage.Res(R.drawable.img_post1),
+            ProfilePostImage.Res(R.drawable.img_post3),
+            ProfilePostImage.Res(R.drawable.img_post5),
+            ProfilePostImage.Res(R.drawable.img_post2),
+            ProfilePostImage.Res(R.drawable.img_post4),
+            ProfilePostImage.Res(R.drawable.img_post6)
+        )
+        return userImages + seeded
+    }
 
     private val inspoItems = listOf(
         InspoItem(R.drawable.img_post1, "Summer fit"),
@@ -56,6 +71,11 @@ class ProfileActivity : AppCompatActivity() {
         BottomNavManager.setup(this, NavScreen.PROFILE, avatarRes)
     }
 
+    override fun onResume() {
+        super.onResume()
+        setupViewPager()  // re-bind with fresh data
+    }
+
     private fun setupViewPager() {
         val viewPager = findViewById<ViewPager2>(R.id.profileViewPager)
         val tabLayout = findViewById<TabLayout>(R.id.profileTabLayout)
@@ -76,7 +96,7 @@ class ProfileActivity : AppCompatActivity() {
                     0 -> {
                         val rv = holder.itemView.findViewById<RecyclerView>(R.id.rvProfileOutfits)
                         rv.layoutManager = LinearLayoutManager(this@ProfileActivity)
-                        rv.adapter = ProfilePostRowAdapter(postImages)
+                        rv.adapter = ProfilePostRowAdapter(getProfilePostImages())
                     }
                     1 -> {
                         val rv = holder.itemView.findViewById<RecyclerView>(R.id.rvProfileInspo)

@@ -36,6 +36,13 @@ class HomeActivity : AppCompatActivity() {
         BottomNavManager.setup(this, NavScreen.HOME)
     }
 
+    override fun onResume() {
+        super.onResume()
+        if (::adapter.isInitialized) {
+            adapter.updatePosts(getFilteredPosts(currentTab))
+        }
+    }
+
     private fun setupPostsFeed() {
         val recyclerView = findViewById<RecyclerView>(R.id.rvPosts)
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -84,6 +91,8 @@ class HomeActivity : AppCompatActivity() {
         selectTab("all")
     }
 
-    private fun getFilteredPosts(tab: String): List<Post> =
-        if (tab == "all") allPosts else allPosts.filter { it.feedType == tab }
+    private fun getFilteredPosts(tab: String): List<Post> {
+        val combined = PostRepository.getUserPosts() + allPosts
+        return if (tab == "all") combined else combined.filter { it.feedType == tab }
+    }
 }

@@ -38,7 +38,11 @@ class PostAdapter(
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         val post = posts[position]
 
-        holder.ivPostImage.setImageResource(post.imageRes)
+        if (post.imageUri != null) {
+            holder.ivPostImage.setImageURI(android.net.Uri.parse(post.imageUri))
+        } else {
+            holder.ivPostImage.setImageResource(post.imageRes)
+        }
         holder.ivUserAvatar.setImageResource(post.avatarRes)
         holder.tvUsername.text = post.username
         holder.tvDescription.text = post.description
