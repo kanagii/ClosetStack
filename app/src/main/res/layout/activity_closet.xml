@@ -42,7 +42,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="10 items · 6 outfits"
-                    android:textColor="#888888"
+                    android:textColor="?android:attr/textColorSecondary"
                     android:textSize="11sp" />
 
             </LinearLayout>
@@ -52,7 +52,7 @@
                 android:id="@+id/cardAddItem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="#2A2A2A"
+                app:cardBackgroundColor="?attr/colorSurfaceContainer"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -74,14 +74,14 @@
                         android:layout_width="16dp"
                         android:layout_height="16dp"
                         android:src="@drawable/ic_add_circle"
-                        app:tint="#FFFFFF" />
+                        app:tint="?android:attr/textColorPrimary" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="6dp"
                         android:text="Add Item"
-                        android:textColor="#FFFFFF"
+                        android:textColor="?android:attr/textColorPrimary"
                         android:textSize="12sp"
                         android:textStyle="bold" />
 
@@ -118,7 +118,7 @@
                     android:paddingStart="18dp"
                     android:paddingEnd="18dp"
                     android:text="All"
-                    android:textColor="#000000"
+                    android:textColor="?attr/colorOnPrimary"
                     android:textSize="13sp"
                     android:textStyle="bold" />
 
@@ -132,7 +132,7 @@
                     android:paddingStart="18dp"
                     android:paddingEnd="18dp"
                     android:text="Tops"
-                    android:textColor="#AAAAAA"
+                    android:textColor="?android:attr/textColorSecondary"
                     android:textSize="13sp" />
 
                 <TextView
@@ -145,7 +145,7 @@
                     android:paddingStart="18dp"
                     android:paddingEnd="18dp"
                     android:text="Bottoms"
-                    android:textColor="#AAAAAA"
+                    android:textColor="?android:attr/textColorSecondary"
                     android:textSize="13sp" />
 
                 <TextView
@@ -158,7 +158,7 @@
                     android:paddingStart="18dp"
                     android:paddingEnd="18dp"
                     android:text="Outer"
-                    android:textColor="#AAAAAA"
+                    android:textColor="?android:attr/textColorSecondary"
                     android:textSize="13sp" />
 
                 <TextView
@@ -171,7 +171,7 @@
                     android:paddingStart="18dp"
                     android:paddingEnd="18dp"
                     android:text="Accessories"
-                    android:textColor="#AAAAAA"
+                    android:textColor="?android:attr/textColorSecondary"
                     android:textSize="13sp" />
 
                 <TextView
@@ -183,7 +183,7 @@
                     android:paddingStart="18dp"
                     android:paddingEnd="18dp"
                     android:text="Shoes"
-                    android:textColor="#AAAAAA"
+                    android:textColor="?android:attr/textColorSecondary"
                     android:textSize="13sp" />
 
             </LinearLayout>
@@ -205,11 +205,11 @@
         tools:listitem="@layout/item_closet_clothing" />
 
     <!-- Bottom Navigation Bar -->
-    <include layout="@layout/layout_bottom_nav" android:layout_width="match_parent" android:layout_height="64dp" android:layout_gravity="bottom" />
-    android:id="@+id/bottomNav"
-    android:layout_width="match_parent"
-    android:layout_height="64dp"
-    android:layout_gravity="bottom"
-    android:background="@color/dark_navy"
+    <include
+        android:id="@+id/bottomNav"
+        layout="@layout/layout_bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_gravity="bottom" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -37,6 +37,17 @@
         android:layout_marginBottom="16dp"/>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnThemeBubbleGum"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:text="Bubble Gum"
+        android:textColor="#FFFFFF"
+        app:backgroundTint="@color/bubble_secondary"
+        app:strokeColor="#FFB7D1"
+        app:strokeWidth="1dp"
+        android:layout_marginBottom="16dp"/>
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnThemeCustom"
         android:layout_width="match_parent"
         android:layout_height="70dp"

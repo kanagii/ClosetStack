@@ -1,15 +1,12 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-
     <style name="Base.Theme.ClosetStack" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
         <item name="android:statusBarColor">@color/dark_navy</item>
         <item name="android:windowLightStatusBar">false</item>
         <item name="colorSurface">@color/dark_navy</item>
         <item name="colorSurfaceContainer">@color/dark_navy</item>
         <item name="colorSurfaceVariant">@color/dark_navy</item>
         <item name="elevationOverlayEnabled">false</item>
-
     </style>
 
     <style name="TabTextStyle" parent="TextAppearance.Design.Tab">
@@ -20,51 +17,47 @@
 
     <style name="Theme.ClosetStack" parent="Base.Theme.ClosetStack" />
 
-    <style name="BottomSheetDarkTheme" parent="ThemeOverlay.Material3.BottomSheetDialog">
-        <item name="bottomSheetStyle">@style/DarkBottomSheetStyle</item>
-    </style>
-
-    <style name="DarkBottomSheetStyle" parent="Widget.Material3.BottomSheet.Modal">
-        <item name="backgroundTint">#1E1E1E</item>
-    </style>
-
     <!-- App Themes -->
-    <style name="Theme.ClosetStack.PaperZine" parent="Base.Theme.ClosetStack">
-        <item name="colorPrimary">@color/paper_primary</item>
-        <item name="colorSecondary">@color/paper_secondary</item>
-        <item name="android:windowBackground">@color/paper_bg</item>
-    </style>
-
-    <style name="Theme.ClosetStack.StreetHeat" parent="Base.Theme.ClosetStack">
-        <item name="colorPrimary">@color/street_primary</item>
-        <item name="colorSecondary">@color/street_secondary</item>
-        <item name="android:windowBackground">@color/street_bg</item>
-    </style>
-
-    <style name="Theme.ClosetStack.Midnight" parent="Base.Theme.ClosetStack">
-        <item name="colorPrimary">@color/midnight_primary</item>
-        <item name="colorSecondary">@color/midnight_secondary</item>
-        <item name="android:windowBackground">@color/midnight_bg</item>
-        <item name="android:textColorPrimary">@color/white</item>
-    </style>
-
-    <style name="Theme.ClosetStack.BubbleGum" parent="Base.Theme.ClosetStack">
-        <item name="colorPrimary">@color/bubble_primary</item>
-        <item name="colorSecondary">@color/bubble_secondary</item>
-        <item name="android:windowBackground">@color/bubble_bg</item>
-    </style>
-
     <style name="Theme.ClosetStack.OriginalNavy" parent="Base.Theme.ClosetStack">
         <item name="android:windowBackground">@color/dark_navy</item>
         <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:textColorSecondary">#AAAAAA</item>
         <item name="colorPrimary">#FFFFFF</item>
-        <item name="colorSecondary">#888888</item>
+        <item name="colorOnPrimary">#0D1B2A</item>
+        <item name="colorSurface">#0D1B2A</item>
+        <item name="colorSurfaceContainer">#1E1E1E</item>
     </style>
+
     <style name="Theme.ClosetStack.DefaultDark" parent="Base.Theme.ClosetStack">
         <item name="android:windowBackground">@color/default_dark_bg</item>
         <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:textColorSecondary">#AAAAAA</item>
         <item name="colorPrimary">#FFFFFF</item>
-        <item name="colorSecondary">#888888</item>
+        <item name="colorOnPrimary">#121212</item>
+        <item name="colorSurface">#121212</item>
+        <item name="colorSurfaceContainer">#1E1E1E</item>
+        <item name="android:statusBarColor">#121212</item>
+    </style>
+
+    <style name="Theme.ClosetStack.BubbleGum" parent="Base.Theme.ClosetStack">
+        <item name="android:windowBackground">@color/bubble_bg</item>
+        <item name="android:textColorPrimary">#4A148C</item>
+        <item name="android:textColorSecondary">#880E4F</item>
+        <item name="colorPrimary">@color/bubble_secondary</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorSurface">@color/bubble_bg</item>
+        <item name="colorSurfaceContainer">#FFFFFF</item>
+        <item name="colorSurfaceVariant">#FFD1E8</item>
+        <item name="android:statusBarColor">@color/bubble_bg</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="BottomSheetDarkTheme" parent="Theme.Material3.Dark.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/CustomBottomSheetStyle</item>
+    </style>
+
+    <style name="CustomBottomSheetStyle" parent="Widget.Material3.BottomSheet.Modal">
+        <item name="backgroundTint">@android:color/transparent</item>
     </style>
 
 </resources>
