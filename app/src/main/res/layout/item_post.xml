@@ -126,20 +126,26 @@
 
             <!-- Rating Row -->
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="3dp">
 
                 <RatingBar
                     android:id="@+id/ratingBar"
-                    style="@style/Widget.AppCompat.RatingBar.Small"
+                    style="@style/Widget.AppCompat.RatingBar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:numStars="5"
                     android:rating="0"
                     android:stepSize="1"
+                    android:scaleX="0.4"
+                    android:scaleY="0.4"
+                    android:transformPivotX="0dp"
+                    android:layout_marginTop="-1dp"
+                    android:layout_marginBottom="-20dp"
+                    android:layout_marginEnd="-120dp"
                     android:progressTint="#FFFFFF"
                     android:secondaryProgressTint="#444444" />
 
@@ -147,8 +153,8 @@
                     android:id="@+id/tvRatingCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
                     android:text="(0)"
+                    android:layout_marginLeft="-20dp"
                     android:textColor="#888888"
                     android:textSize="12sp" />
 

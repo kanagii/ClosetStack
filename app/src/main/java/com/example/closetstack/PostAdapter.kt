@@ -1,5 +1,6 @@
 package com.example.closetstack
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,8 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 class PostAdapter(
     private var posts: List<Post>,
     private val onSaveClick: (Post) -> Unit,
-    private val onRatingChanged: (Post, Float) -> Unit
-) : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
+    private val onRatingChanged: (Post, Float) -> Unit,
+    private val onPostClick: (Post, Int) -> Unit
+) : RecyclerView.Adapter<PostAdapter.PostViewHolder>(){
 
     inner class PostViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val ivPostImage: ImageView = view.findViewById(R.id.ivPostImage)
@@ -32,6 +34,7 @@ class PostAdapter(
         return PostViewHolder(view)
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         val post = posts[position]
 
@@ -62,6 +65,17 @@ class PostAdapter(
                     onRatingChanged(post, rating)
                 }
             }
+
+        holder.ratingBar.setOnTouchListener { v, event ->
+            v.parent.requestDisallowInterceptTouchEvent(true)
+            false
+        }
+
+        holder.ivPostImage.setOnClickListener {
+            val intent = android.content.Intent(holder.itemView.context, PostDetailActivity::class.java)
+            intent.putExtra("imageRes", post.imageRes)
+            holder.itemView.context.startActivity(intent)
+        }
     }
 
     private fun updateSaveIcon(ivSave: ImageView, isSaved: Boolean) {
