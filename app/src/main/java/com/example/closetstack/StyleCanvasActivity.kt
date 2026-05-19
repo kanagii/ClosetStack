@@ -1,8 +1,12 @@
 package com.example.closetstack
 
 import android.app.Activity
+import android.content.ClipData
 import android.content.Intent
 import android.os.Bundle
+import android.view.DragEvent
+import android.view.GestureDetector
+import android.view.MotionEvent
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
@@ -15,15 +19,18 @@ import com.google.android.material.button.MaterialButton
 
 class StyleCanvasActivity : AppCompatActivity() {
 
-    private var slotTopRes: Int = R.drawable.benchtee
-    private var slotBottomRes: Int = R.drawable.relaxedpants
-    private var slotShoesRes: Int = R.drawable.airforce
+    private var slotTopRes: Int? = null
+    private var slotBottomRes: Int? = null
+    private var slotShoesRes: Int? = null
     private var slotAccessoriesRes: Int? = null
 
     private enum class ActiveSlot { TOP, BOTTOM, SHOES, ACCESSORIES }
     private var activeSlot = ActiveSlot.TOP
 
     private var selectedCategory = "casual"
+
+    // Variable to keep track of the item currently being dragged
+    private var currentlyDraggedItem: ClothingItem? = null
 
     // Defines which closet categories are allowed per slot
     private val slotAllowedCategories = mapOf(
@@ -59,6 +66,7 @@ class StyleCanvasActivity : AppCompatActivity() {
         setupClosetFilter()
         setupClosetGrid()
         setupSaveReset()
+        setupDragAndDrop() // Initialize Drag and Drop Zones
 
         // Start with TOP active and filter to tops
         setActiveSlot(ActiveSlot.TOP)
@@ -168,15 +176,24 @@ class StyleCanvasActivity : AppCompatActivity() {
         when (activeSlot) {
             ActiveSlot.TOP -> {
                 slotTopRes = item.imageRes
-                findViewById<ImageView>(R.id.ivSlotTop).setImageResource(item.imageRes)
+                val iv = findViewById<ImageView>(R.id.ivSlotTop)
+                iv.setImageResource(item.imageRes)
+                iv.visibility = View.VISIBLE
+                findViewById<View>(R.id.layoutTopEmpty).visibility = View.GONE
             }
             ActiveSlot.BOTTOM -> {
                 slotBottomRes = item.imageRes
-                findViewById<ImageView>(R.id.ivSlotBottom).setImageResource(item.imageRes)
+                val iv = findViewById<ImageView>(R.id.ivSlotBottom)
+                iv.setImageResource(item.imageRes)
+                iv.visibility = View.VISIBLE
+                findViewById<View>(R.id.layoutBottomEmpty).visibility = View.GONE
             }
             ActiveSlot.SHOES -> {
                 slotShoesRes = item.imageRes
-                findViewById<ImageView>(R.id.ivSlotShoes).setImageResource(item.imageRes)
+                val iv = findViewById<ImageView>(R.id.ivSlotShoes)
+                iv.setImageResource(item.imageRes)
+                iv.visibility = View.VISIBLE
+                findViewById<View>(R.id.layoutShoesEmpty).visibility = View.GONE
             }
             ActiveSlot.ACCESSORIES -> {
                 slotAccessoriesRes = item.imageRes
@@ -264,20 +281,116 @@ class StyleCanvasActivity : AppCompatActivity() {
         rv.layoutManager = GridLayoutManager(this, 3)
         rv.adapter = closetAdapter
 
-        rv.addOnItemTouchListener(object : RecyclerView.SimpleOnItemTouchListener() {
-            override fun onInterceptTouchEvent(rv: RecyclerView, e: android.view.MotionEvent): Boolean {
-                if (e.action == android.view.MotionEvent.ACTION_UP) {
-                    val child = rv.findChildViewUnder(e.x, e.y)
-                    if (child != null) {
-                        val position = rv.getChildAdapterPosition(child)
-                        if (position >= 0 && position < filteredItems.size) {
-                            fillActiveSlot(filteredItems[position])
-                        }
+        // We use a GestureDetector to differentiate between a simple tap and a long press
+        val gestureDetector = GestureDetector(this, object : GestureDetector.SimpleOnGestureListener() {
+
+            // Allow users to still just tap to equip
+            override fun onSingleTapUp(e: MotionEvent): Boolean {
+                val child = rv.findChildViewUnder(e.x, e.y)
+                if (child != null) {
+                    val position = rv.getChildAdapterPosition(child)
+                    if (position >= 0 && position < filteredItems.size) {
+                        fillActiveSlot(filteredItems[position])
                     }
                 }
+                return true
+            }
+
+            // Detect Long Press to trigger drag and drop
+            override fun onLongPress(e: MotionEvent) {
+                val child = rv.findChildViewUnder(e.x, e.y)
+                if (child != null) {
+                    val position = rv.getChildAdapterPosition(child)
+                    if (position >= 0 && position < filteredItems.size) {
+
+                        currentlyDraggedItem = filteredItems[position] // Save what we are holding
+
+                        // ClipData is required for drag actions
+                        val clipData = ClipData.newPlainText("clothing_item", position.toString())
+
+                        // Creates a visually floating shadow of the view we are holding
+                        val shadowBuilder = View.DragShadowBuilder(child)
+
+                        // Start the actual drag
+                        child.startDragAndDrop(clipData, shadowBuilder, null, 0)
+                    }
+                }
+            }
+        })
+
+        rv.addOnItemTouchListener(object : RecyclerView.SimpleOnItemTouchListener() {
+            override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
+                // Pass touch events to our new GestureDetector
+                gestureDetector.onTouchEvent(e)
                 return false
             }
         })
+    }
+
+    private fun setupDragAndDrop() {
+        val dragListener = View.OnDragListener { view, event ->
+            when (event.action) {
+                DragEvent.ACTION_DRAG_STARTED -> true // Signal that this view accepts drag events
+
+                DragEvent.ACTION_DRAG_ENTERED -> {
+                    // Provide a cool visual cue when hovering over a slot (dim it slightly)
+                    view.alpha = 0.7f
+                    true
+                }
+
+                DragEvent.ACTION_DRAG_EXITED -> {
+                    // Revert the visual cue if the user drags away
+                    view.alpha = 1.0f
+                    true
+                }
+
+                DragEvent.ACTION_DROP -> {
+                    // The user released their finger!
+                    view.alpha = 1.0f
+                    val droppedItem = currentlyDraggedItem
+
+                    if (droppedItem != null) {
+                        // Find out which slot we just dropped the item onto
+                        val targetSlot = when (view.id) {
+                            R.id.slotTop -> ActiveSlot.TOP
+                            R.id.slotBottom -> ActiveSlot.BOTTOM
+                            R.id.slotShoes -> ActiveSlot.SHOES
+                            R.id.slotAccessories -> ActiveSlot.ACCESSORIES
+                            else -> null
+                        }
+
+                        if (targetSlot != null) {
+                            val allowed = slotAllowedCategories[targetSlot] ?: listOf()
+
+                            if (droppedItem.category in allowed) {
+                                // If allowed, momentarily set the active slot and fill it!
+                                setActiveSlot(targetSlot)
+                                fillActiveSlot(droppedItem)
+                            } else {
+                                // Provide feedback if they drop a shoe onto the top slot
+                                val allowedStr = allowed.joinToString(" or ")
+                                Toast.makeText(this, "This slot only accepts $allowedStr items", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    }
+                    currentlyDraggedItem = null // Reset our tracker
+                    true
+                }
+
+                DragEvent.ACTION_DRAG_ENDED -> {
+                    view.alpha = 1.0f // Ensure alpha is restored in case something went wrong
+                    currentlyDraggedItem = null
+                    true
+                }
+                else -> false
+            }
+        }
+
+        // Attach this universal drag listener to all 4 of your slot CardViews
+        findViewById<View>(R.id.slotTop).setOnDragListener(dragListener)
+        findViewById<View>(R.id.slotBottom).setOnDragListener(dragListener)
+        findViewById<View>(R.id.slotShoes).setOnDragListener(dragListener)
+        findViewById<View>(R.id.slotAccessories).setOnDragListener(dragListener)
     }
 
     private fun setupSaveReset() {
@@ -293,10 +406,10 @@ class StyleCanvasActivity : AppCompatActivity() {
             val resultIntent = Intent().apply {
                 putExtra("outfit_name",     name)
                 putExtra("outfit_category", selectedCategory)
-                putExtra("outfit_item1",    slotTopRes)
-                putExtra("outfit_item2",    slotBottomRes)
-                putExtra("outfit_item3",    slotShoesRes)
-                putExtra("outfit_item4",    slotAccessoriesRes ?: slotTopRes)
+                putExtra("outfit_item1",    slotTopRes ?: 0)
+                putExtra("outfit_item2",    slotBottomRes ?: 0)
+                putExtra("outfit_item3",    slotShoesRes ?: 0)
+                putExtra("outfit_item4",    slotAccessoriesRes ?: 0)
             }
             setResult(Activity.RESULT_OK, resultIntent)
             finish()
@@ -304,17 +417,21 @@ class StyleCanvasActivity : AppCompatActivity() {
         }
 
         findViewById<MaterialButton>(R.id.btnResetOutfit).setOnClickListener {
-            slotTopRes = R.drawable.benchtee
-            slotBottomRes = R.drawable.relaxedpants
-            slotShoesRes = R.drawable.airforce
+            slotTopRes = null
+            slotBottomRes = null
+            slotShoesRes = null
             slotAccessoriesRes = null
 
-            findViewById<ImageView>(R.id.ivSlotTop).setImageResource(slotTopRes)
-            findViewById<ImageView>(R.id.ivSlotBottom).setImageResource(slotBottomRes)
-            findViewById<ImageView>(R.id.ivSlotShoes).setImageResource(slotShoesRes)
+            findViewById<ImageView>(R.id.ivSlotTop).visibility = View.GONE
+            findViewById<View>(R.id.layoutTopEmpty).visibility = View.VISIBLE
 
-            val ivAcc = findViewById<ImageView>(R.id.ivSlotAccessories)
-            ivAcc.visibility = View.GONE
+            findViewById<ImageView>(R.id.ivSlotBottom).visibility = View.GONE
+            findViewById<View>(R.id.layoutBottomEmpty).visibility = View.VISIBLE
+
+            findViewById<ImageView>(R.id.ivSlotShoes).visibility = View.GONE
+            findViewById<View>(R.id.layoutShoesEmpty).visibility = View.VISIBLE
+
+            findViewById<ImageView>(R.id.ivSlotAccessories).visibility = View.GONE
             findViewById<View>(R.id.layoutAccessoriesEmpty).visibility = View.VISIBLE
 
             findViewById<EditText>(R.id.etOutfitName).text.clear()

@@ -169,19 +169,32 @@
                                 android:layout_height="match_parent"
                                 android:scaleType="centerInside"
                                 android:padding="8dp"
-                                android:src="@drawable/benchtee" />
+                                android:visibility="gone" />
 
-                            <TextView
+                            <LinearLayout
+                                android:id="@+id/layoutTopEmpty"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="bottom"
-                                android:background="#55000000"
+                                android:layout_height="match_parent"
                                 android:gravity="center"
-                                android:padding="4dp"
-                                android:text="TOP"
-                                android:textColor="#AAAAAA"
-                                android:textSize="8sp"
-                                android:letterSpacing="0.1" />
+                                android:orientation="vertical"
+                                android:background="@drawable/bg_dashed_border_light">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="+"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="20sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Tops"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="9sp"
+                                    android:gravity="center" />
+
+                            </LinearLayout>
 
                             <!-- Active indicator ring -->
                             <View
@@ -278,19 +291,32 @@
                                 android:layout_height="match_parent"
                                 android:scaleType="centerInside"
                                 android:padding="8dp"
-                                android:src="@drawable/relaxedpants" />
+                                android:visibility="gone" />
 
-                            <TextView
+                            <LinearLayout
+                                android:id="@+id/layoutBottomEmpty"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="bottom"
-                                android:background="#55000000"
+                                android:layout_height="match_parent"
                                 android:gravity="center"
-                                android:padding="4dp"
-                                android:text="BOTTOM"
-                                android:textColor="#AAAAAA"
-                                android:textSize="8sp"
-                                android:letterSpacing="0.1" />
+                                android:orientation="vertical"
+                                android:background="@drawable/bg_dashed_border_light">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="+"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="20sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Bottoms"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="9sp"
+                                    android:gravity="center" />
+
+                            </LinearLayout>
 
                             <View
                                 android:id="@+id/ringSlotBottom"
@@ -320,19 +346,32 @@
                                 android:layout_height="match_parent"
                                 android:scaleType="centerInside"
                                 android:padding="8dp"
-                                android:src="@drawable/airforce" />
+                                android:visibility="gone" />
 
-                            <TextView
+                            <LinearLayout
+                                android:id="@+id/layoutShoesEmpty"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="bottom"
-                                android:background="#55000000"
+                                android:layout_height="match_parent"
                                 android:gravity="center"
-                                android:padding="4dp"
-                                android:text="SHOES"
-                                android:textColor="#AAAAAA"
-                                android:textSize="8sp"
-                                android:letterSpacing="0.1" />
+                                android:orientation="vertical"
+                                android:background="@drawable/bg_dashed_border_light">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="+"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="20sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Shoes"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="9sp"
+                                    android:gravity="center" />
+
+                            </LinearLayout>
 
                             <View
                                 android:id="@+id/ringSlotShoes"
