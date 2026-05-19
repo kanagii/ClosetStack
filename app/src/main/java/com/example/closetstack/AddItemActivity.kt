@@ -10,12 +10,11 @@ import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatSpinner
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.button.MaterialButton
 
-class AddItemActivity : AppCompatActivity() {
+class AddItemActivity : BaseActivity() {
 
     private var selectedSize = ""
     private var selectedColor = ""

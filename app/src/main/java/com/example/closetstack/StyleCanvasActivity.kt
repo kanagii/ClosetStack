@@ -8,12 +8,11 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
 
-class StyleCanvasActivity : AppCompatActivity() {
+class StyleCanvasActivity : BaseActivity() {
 
     private var slotTopRes: Int = R.drawable.benchtee
     private var slotBottomRes: Int = R.drawable.relaxedpants

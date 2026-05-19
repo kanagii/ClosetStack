@@ -22,5 +22,30 @@
         <item name="backgroundTint">#1E1E1E</item>
     </style>
 
+    <!-- App Themes -->
+    <style name="Theme.ClosetStack.PaperZine" parent="Base.Theme.ClosetStack">
+        <item name="colorPrimary">@color/paper_primary</item>
+        <item name="colorSecondary">@color/paper_secondary</item>
+        <item name="android:windowBackground">@color/paper_bg</item>
+    </style>
+
+    <style name="Theme.ClosetStack.StreetHeat" parent="Base.Theme.ClosetStack">
+        <item name="colorPrimary">@color/street_primary</item>
+        <item name="colorSecondary">@color/street_secondary</item>
+        <item name="android:windowBackground">@color/street_bg</item>
+    </style>
+
+    <style name="Theme.ClosetStack.Midnight" parent="Base.Theme.ClosetStack">
+        <item name="colorPrimary">@color/midnight_primary</item>
+        <item name="colorSecondary">@color/midnight_secondary</item>
+        <item name="android:windowBackground">@color/midnight_bg</item>
+        <item name="android:textColorPrimary">@color/white</item>
+    </style>
+
+    <style name="Theme.ClosetStack.BubbleGum" parent="Base.Theme.ClosetStack">
+        <item name="colorPrimary">@color/bubble_primary</item>
+        <item name="colorSecondary">@color/bubble_secondary</item>
+        <item name="android:windowBackground">@color/bubble_bg</item>
+    </style>
 
 </resources>

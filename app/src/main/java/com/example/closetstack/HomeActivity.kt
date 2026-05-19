@@ -3,11 +3,10 @@ package com.example.closetstack
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : BaseActivity() {
 
     private lateinit var adapter: PostAdapter
     private var currentTab = "all"
@@ -40,7 +39,7 @@ class HomeActivity : AppCompatActivity() {
         val recyclerView = findViewById<RecyclerView>(R.id.rvPosts)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        PostRepository.posts = allPosts  // ADD THIS
+        PostRepository.posts = allPosts
 
         adapter = PostAdapter(
             getFilteredPosts("all"),
@@ -48,7 +47,7 @@ class HomeActivity : AppCompatActivity() {
             onRatingChanged = { post, rating ->
                 Toast.makeText(this, "You rated ${post.username}'s fit $rating ⭐", Toast.LENGTH_SHORT).show()
             },
-            onPostClick = { _, position ->           // ADD THIS
+            onPostClick = { _, position ->
                 val intent = android.content.Intent(this, PostDetailActivity::class.java)
                 intent.putExtra("position", position)
                 startActivity(intent)
