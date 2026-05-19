@@ -27,6 +27,8 @@ object BottomNavManager {
         val navCloset  = activity.findViewById<LinearLayout>(R.id.navCloset)
         val navOutfits = activity.findViewById<LinearLayout>(R.id.navOutfits)
         val navProfile = activity.findViewById<LinearLayout>(R.id.navProfile)
+        val navPost = activity.findViewById<LinearLayout>(R.id.navPost)
+
 
         val ivHome    = activity.findViewById<ImageView>(R.id.ivNavHome)
         val ivCloset  = activity.findViewById<ImageView>(R.id.ivNavCloset)
@@ -71,6 +73,11 @@ object BottomNavManager {
                 activity.overridePendingTransition(0, 0)
                 activity.finish()
             }
+        }
+
+        navPost?.setOnClickListener {
+            activity.startActivity(Intent(activity, CreatePostActivity::class.java))
+            activity.overridePendingTransition(R.anim.slide_in_left, R.anim.no_anim)
         }
     }
 
@@ -131,6 +138,10 @@ object BottomNavManager {
     private fun setCircularAvatar(activity: Activity, imageView: ImageView, avatarRes: Int) {
         try {
             val original = BitmapFactory.decodeResource(activity.resources, avatarRes)
+            if (original == null) {
+                imageView.setImageResource(R.drawable.ic_person)
+                return
+            }
             val size = 80
             val scaled = Bitmap.createScaledBitmap(original, size, size, true)
             val output = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888)

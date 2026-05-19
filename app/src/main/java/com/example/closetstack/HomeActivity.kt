@@ -3,6 +3,7 @@ package com.example.closetstack
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -33,6 +34,13 @@ class HomeActivity : BaseActivity() {
         setupPostsFeed()
         setupFeedTabs()
         BottomNavManager.setup(this, NavScreen.HOME)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (::adapter.isInitialized) {
+            adapter.updatePosts(getFilteredPosts(currentTab))
+        }
     }
 
     private fun setupPostsFeed() {
@@ -83,6 +91,8 @@ class HomeActivity : BaseActivity() {
         selectTab("all")
     }
 
-    private fun getFilteredPosts(tab: String): List<Post> =
-        if (tab == "all") allPosts else allPosts.filter { it.feedType == tab }
+    private fun getFilteredPosts(tab: String): List<Post> {
+        val combined = PostRepository.getUserPosts() + allPosts
+        return if (tab == "all") combined else combined.filter { it.feedType == tab }
+    }
 }
