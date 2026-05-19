@@ -2,7 +2,10 @@ package com.example.closetstack
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.widget.Button
+import android.widget.TextView // CRITICAL: Added missing type reference
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 // 3. The View (The UI Binding)
 class ThemesActivity : BaseActivity(), ThemesContract.View {
@@ -10,36 +13,54 @@ class ThemesActivity : BaseActivity(), ThemesContract.View {
     private lateinit var presenter: ThemesContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState) // BaseActivity applies the theme here!
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_themes)
 
-        // Initialize Presenter
+        // Initialize Presenter matching our clean contract
         presenter = ThemesPresenter(this, themeRepository)
 
         // Bind Buttons
-        findViewById<Button>(R.id.btnThemePaperZine).setOnClickListener {
-            presenter.onThemeSelected(R.style.Theme_ClosetStack_PaperZine)
+        findViewById<Button>(R.id.btnThemeOriginal).setOnClickListener {
+            presenter.onThemeSelected(R.style.Theme_ClosetStack_OriginalNavy)
         }
-        
-        findViewById<Button>(R.id.btnThemeStreetHeat).setOnClickListener {
-            presenter.onThemeSelected(R.style.Theme_ClosetStack_StreetHeat)
-        }
-        
-        findViewById<Button>(R.id.btnThemeMidnight).setOnClickListener {
-            presenter.onThemeSelected(R.style.Theme_ClosetStack_Midnight)
-        }
-        
-        findViewById<Button>(R.id.btnThemeBubbleGum).setOnClickListener {
-            presenter.onThemeSelected(R.style.Theme_ClosetStack_BubbleGum)
+
+        findViewById<Button>(R.id.btnThemeCustom).setOnClickListener {
+            presenter.onCustomThemeClicked()
         }
     }
 
     override fun applyThemeAndRestart() {
-        // Invalidate the current UI and restart the activity stack to apply the new theme globally
-        val intent = Intent(this, MainActivity::class.java) // Redirect to your app's main entry point
+        val intent = Intent(this, MainActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
-        
-        // Alternative for just this screen: recreate()
+    }
+
+    override fun showCustomThemeModal() {
+        // 1. Inflate layout
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_color_picker, null)
+
+        // 2. Build the Material Dialog
+        val dialog = MaterialAlertDialogBuilder(this)
+            .setView(dialogView)
+            .create()
+
+        // 3. Change title text dynamically (Now compiles perfectly!)
+        val tvTitle = dialogView.findViewById<TextView>(R.id.tvColorPickerTitle)
+        tvTitle?.text = "Design Your Vibe"
+
+        // 4. Bind Custom buttons inside layout
+        val btnCancel = dialogView.findViewById<Button>(R.id.btnCancelColor)
+        val btnConfirm = dialogView.findViewById<Button>(R.id.btnConfirmColor)
+
+        btnCancel.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        btnConfirm.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        // 5. Render to screen
+        dialog.show()
     }
 }

@@ -22,4 +22,5 @@
     <color name="bubble_primary">#DBBAF1</color>
     <color name="bubble_secondary">#FF5EC6</color>
     <color name="bubble_accent">#00E5FC</color>
+    <color name="default_dark_bg">#121212</color>
 </resources>

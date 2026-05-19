@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#121212"
+    android:background="?android:attr/windowBackground"
     tools:context=".ProfileActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#121212"
+        android:background="?android:attr/windowBackground"
         app:elevation="0dp">
 
         <!-- Top bar: username + settings -->
@@ -25,7 +25,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Vanessa Kung"
-                android:textColor="#FFFFFF"
+                android:textColor="?android:attr/textColorPrimary"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -79,7 +79,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Vanessa Kung"
-                    android:textColor="#FFFFFF"
+                    android:textColor="?android:attr/textColorPrimary"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
@@ -185,10 +185,10 @@
             android:id="@+id/profileTabLayout"
             android:layout_width="match_parent"
             android:layout_height="44dp"
-            android:background="#121212"
+            android:background="?android:attr/windowBackground"
             app:tabTextColor="#888888"
-            app:tabSelectedTextColor="#FFFFFF"
-            app:tabIndicatorColor="#FFFFFF"
+            app:tabSelectedTextColor="?android:attr/textColorPrimary"
+            app:tabIndicatorColor="?attr/colorPrimary"
             app:tabIndicatorHeight="2dp"
             app:tabRippleColor="@android:color/transparent"
             app:tabMode="fixed"

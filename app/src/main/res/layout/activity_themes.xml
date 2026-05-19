@@ -15,41 +15,36 @@
         android:layout_marginBottom="32dp"/>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnThemePaperZine"
+        android:id="@+id/btnThemeOriginal"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:text="Paper Zine"
-        android:textColor="@color/black"
-        app:backgroundTint="@color/paper_primary"
+        android:text="Original Navy"
+        android:textColor="#FFFFFF"
+        app:backgroundTint="@color/dark_navy"
+        app:strokeColor="#555555"
+        app:strokeWidth="1dp"
         android:layout_marginBottom="16dp"/>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnThemeStreetHeat"
+        android:id="@+id/btnThemeDefaultDark"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:text="Street Heat"
-        android:textColor="@color/black"
-        app:backgroundTint="@color/street_primary"
+        android:text="Default Dark"
+        android:textColor="#FFFFFF"
+        app:backgroundTint="@color/default_dark_bg"
+        app:strokeColor="#555555"
+        app:strokeWidth="1dp"
         android:layout_marginBottom="16dp"/>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnThemeMidnight"
+        android:id="@+id/btnThemeCustom"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:text="Midnight"
-        android:textColor="@color/white"
-        app:backgroundTint="@color/midnight_bg"
-        app:strokeColor="@color/midnight_primary"
+        android:text="Customize Your Own"
+        android:textColor="?android:attr/textColorPrimary"
+        app:backgroundTint="?attr/colorSurface"
+        app:strokeColor="?attr/colorPrimary"
         app:strokeWidth="2dp"
-        android:layout_marginBottom="16dp"/>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnThemeBubbleGum"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:text="Bubble Gum"
-        android:textColor="@color/black"
-        app:backgroundTint="@color/bubble_primary"
         android:layout_marginBottom="16dp"/>
 
 </LinearLayout>

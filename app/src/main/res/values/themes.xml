@@ -54,4 +54,17 @@
         <item name="android:windowBackground">@color/bubble_bg</item>
     </style>
 
+    <style name="Theme.ClosetStack.OriginalNavy" parent="Base.Theme.ClosetStack">
+        <item name="android:windowBackground">@color/dark_navy</item>
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="colorPrimary">#FFFFFF</item>
+        <item name="colorSecondary">#888888</item>
+    </style>
+    <style name="Theme.ClosetStack.DefaultDark" parent="Base.Theme.ClosetStack">
+        <item name="android:windowBackground">@color/default_dark_bg</item>
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="colorPrimary">#FFFFFF</item>
+        <item name="colorSecondary">#888888</item>
+    </style>
+
 </resources>

@@ -15,7 +15,7 @@ class ThemeRepository(context: Context) {
 
     // Retrieve the theme ID, defaulting to Paper Zine if none is saved
     fun getTheme(): Int {
-        return prefs.getInt(KEY_THEME, R.style.Theme_ClosetStack_PaperZine)
+        return prefs.getInt(KEY_THEME, R.style.Theme_ClosetStack_DefaultDark)
     }
 
     companion object {

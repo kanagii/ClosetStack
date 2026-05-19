@@ -12,4 +12,9 @@ class ThemesPresenter(
         // Instruct the View to react
         view.applyThemeAndRestart()
     }
+    // Add this implementation inside your ThemesPresenter class
+    override fun onCustomThemeClicked() {
+        // The presenter decides it's time to show the modal
+        view.showCustomThemeModal()
+    }
 }
