@@ -26,7 +26,6 @@
             android:layout_height="22dp"
             android:src="@drawable/ic_home"
             app:tint="@color/nav_icon_selected" />
-
     </LinearLayout>
 
     <!-- Closet -->
@@ -44,10 +43,30 @@
             android:layout_height="22dp"
             android:src="@drawable/ic_closet"
             app:tint="@color/nav_icon_unselected" />
-
     </LinearLayout>
 
-    <!-- Outfits (hanger) - center, slightly bigger -->
+    <!-- CENTER: ClosetStack logo as Post button -->
+    <LinearLayout
+        android:id="@+id/navPost"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?attr/selectableItemBackgroundBorderless">
+
+        <ImageView
+            android:id="@+id/ivNavPost"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_closetstack_logo"
+            android:contentDescription="Create post"
+            app:tint="#FFFFFF" />
+    </LinearLayout>
+
+    <!-- Outfits (hanger) -->
     <LinearLayout
         android:id="@+id/navOutfits"
         android:layout_width="0dp"
@@ -62,7 +81,6 @@
             android:layout_height="24dp"
             android:src="@drawable/ic_hanger"
             app:tint="@color/nav_icon_unselected" />
-
     </LinearLayout>
 
     <!-- Profile -->
@@ -81,7 +99,6 @@
             android:src="@drawable/usertop1"
             android:scaleType="centerCrop"
             android:background="@drawable/bg_nav_avatar_unselected" />
-
     </LinearLayout>
 
 </LinearLayout>

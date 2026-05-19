@@ -27,6 +27,8 @@ object BottomNavManager {
         val navCloset  = activity.findViewById<LinearLayout>(R.id.navCloset)
         val navOutfits = activity.findViewById<LinearLayout>(R.id.navOutfits)
         val navProfile = activity.findViewById<LinearLayout>(R.id.navProfile)
+        val navPost = activity.findViewById<LinearLayout>(R.id.navPost)
+
 
         val ivHome    = activity.findViewById<ImageView>(R.id.ivNavHome)
         val ivCloset  = activity.findViewById<ImageView>(R.id.ivNavCloset)
@@ -71,6 +73,11 @@ object BottomNavManager {
                 activity.overridePendingTransition(0, 0)
                 activity.finish()
             }
+        }
+
+        navPost?.setOnClickListener {
+            activity.startActivity(Intent(activity, CreatePostActivity::class.java))
+            activity.overridePendingTransition(R.anim.slide_in_left, R.anim.no_anim)
         }
     }
 

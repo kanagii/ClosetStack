@@ -1,5 +1,6 @@
 package com.example.closetstack
 
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,14 +9,19 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
+// Wrapper for either a drawable resource or a URI string
+sealed class ProfilePostImage {
+    data class Res(val resId: Int) : ProfilePostImage()
+    data class Uri(val uri: String) : ProfilePostImage()
+    object Empty : ProfilePostImage()
+}
+
 class ProfilePostRowAdapter(
-    private val images: List<Int>
+    private val images: List<ProfilePostImage>
 ) : RecyclerView.Adapter<ProfilePostRowAdapter.RowViewHolder>() {
 
-    // Group images into rows of 3
-    private val rows: List<List<Int>> = images.chunked(3).map { row ->
-        // Pad with -1 if row has fewer than 3
-        row + List(3 - row.size) { -1 }
+    private val rows: List<List<ProfilePostImage>> = images.chunked(3).map { row ->
+        row + List(3 - row.size) { ProfilePostImage.Empty }
     }
 
     inner class RowViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -38,16 +44,24 @@ class ProfilePostRowAdapter(
         val row = rows[position]
         val ivList = listOf(holder.iv1, holder.iv2, holder.iv3)
         val ratingList = listOf(holder.tvRating1, holder.tvRating2, holder.tvRating3)
-        val ratings = listOf("4.5", "4.8", "4.2", "4.6", "4.9", "4.3", "4.7", "4.1", "4.4")
+        val seededRatings = listOf("4.5", "4.8", "4.2", "4.6", "4.9", "4.3", "4.7", "4.1", "4.4")
 
-        row.forEachIndexed { i, res ->
-            if (res != -1) {
-                ivList[i].setImageResource(res)
-                ivList[i].visibility = View.VISIBLE
-                ratingList[i].text = ratings[(position * 3 + i) % ratings.size]
-            } else {
-                ivList[i].visibility = View.INVISIBLE
-                ratingList[i].text = ""
+        row.forEachIndexed { i, img ->
+            when (img) {
+                is ProfilePostImage.Res -> {
+                    ivList[i].setImageResource(img.resId)
+                    ivList[i].visibility = View.VISIBLE
+                    ratingList[i].text = seededRatings[(position * 3 + i) % seededRatings.size]
+                }
+                is ProfilePostImage.Uri -> {
+                    ivList[i].setImageURI(Uri.parse(img.uri))
+                    ivList[i].visibility = View.VISIBLE
+                    ratingList[i].text = "0.0"
+                }
+                ProfilePostImage.Empty -> {
+                    ivList[i].visibility = View.INVISIBLE
+                    ratingList[i].text = ""
+                }
             }
         }
 
