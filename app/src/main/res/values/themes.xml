@@ -1,9 +1,15 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
+
     <style name="Base.Theme.ClosetStack" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <item name="android:statusBarColor">@color/dark_navy</item>
         <item name="android:windowLightStatusBar">false</item>
+        <item name="colorSurface">@color/dark_navy</item>
+        <item name="colorSurfaceContainer">@color/dark_navy</item>
+        <item name="colorSurfaceVariant">@color/dark_navy</item>
+        <item name="elevationOverlayEnabled">false</item>
+
     </style>
 
     <style name="TabTextStyle" parent="TextAppearance.Design.Tab">
