@@ -104,8 +104,18 @@ class OutfitsActivity : BaseActivity() {
     }
 
     private fun setupRecyclerView() {
-        adapter = OutfitAdapter(allOutfits) { _ ->
-            Toast.makeText(this, "Outfit editing coming soon!", Toast.LENGTH_SHORT).show()
+        adapter = OutfitAdapter(allOutfits) { clickedOutfit ->
+            // Check if it's one of the first 2 outfits in the current allOutfits list
+            val index = allOutfits.indexOf(clickedOutfit)
+            if (index in 0..1) {
+                val intent = Intent(this, OutfitDetailsActivity::class.java).apply {
+                    putExtra("EXTRA_OUTFIT", clickedOutfit)
+                }
+                startActivity(intent)
+                overridePendingTransition(0, 0)
+            } else {
+                Toast.makeText(this, "Outfit details coming soon for this item!", Toast.LENGTH_SHORT).show()
+            }
         }
         val rv = findViewById<RecyclerView>(R.id.rvOutfits)
         rv.layoutManager = GridLayoutManager(this, 2)
