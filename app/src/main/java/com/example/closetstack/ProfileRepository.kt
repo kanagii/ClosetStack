@@ -40,7 +40,7 @@ object ProfileRepository {
                 val resId = context.resources.getIdentifier(savedAvatar, "drawable", context.packageName)
                 if (resId != 0) resId else R.drawable.usertop1
             }
-            is Int -> savedAvatar
+            is Int -> savedAvatar // Fallback for old installations
             else -> R.drawable.usertop1
         }
 

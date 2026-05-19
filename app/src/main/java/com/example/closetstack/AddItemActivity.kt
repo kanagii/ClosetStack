@@ -53,7 +53,7 @@ class AddItemActivity : AppCompatActivity() {
         setupColorSelector()
         setupPhotoButtons()
         setupSaveButton()
-
+        BottomNavManager.setup(this, NavScreen.CLOSET)
     }
 
     private fun dp(value: Int): Int =
