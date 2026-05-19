@@ -55,6 +55,7 @@ class StyleCanvasActivity : BaseActivity() {
         setupBack()
         setupCategorySelector()
         setupSlots()
+        setupAiSuggestions()
         setupClosetFilter()
         setupClosetGrid()
         setupSaveReset()
@@ -112,6 +113,65 @@ class StyleCanvasActivity : BaseActivity() {
         findViewById<View>(R.id.slotAccessories).setOnClickListener {
             setActiveSlot(ActiveSlot.ACCESSORIES)
             applySlotFilter(ActiveSlot.ACCESSORIES)
+        }
+    }
+
+    private fun setupAiSuggestions() {
+        findViewById<View>(R.id.btnAiSuggestTop).setOnClickListener {
+            suggestItemForSlot(ActiveSlot.TOP)
+        }
+        findViewById<View>(R.id.btnAiSuggestBottom).setOnClickListener {
+            suggestItemForSlot(ActiveSlot.BOTTOM)
+        }
+        findViewById<View>(R.id.btnAiSuggestShoes).setOnClickListener {
+            suggestItemForSlot(ActiveSlot.SHOES)
+        }
+        findViewById<View>(R.id.btnAiSuggestAccessories).setOnClickListener {
+            suggestItemForSlot(ActiveSlot.ACCESSORIES)
+        }
+    }
+
+    private fun suggestItemForSlot(slot: ActiveSlot) {
+        // 1. Get the allowed categories for this slot
+        val allowed = slotAllowedCategories[slot] ?: return
+
+        // 2. Filter our closet items to only those that fit
+        val possibleItems = allClosetItems.filter { it.category in allowed }
+
+        // 3. Pick a random item (Mocking the AI suggestion)
+        if (possibleItems.isNotEmpty()) {
+            val aiSuggestedItem = possibleItems.random()
+
+            // 4. Update the UI directly
+            when (slot) {
+                ActiveSlot.TOP -> {
+                    slotTopRes = aiSuggestedItem.imageRes
+                    findViewById<ImageView>(R.id.ivSlotTop).setImageResource(aiSuggestedItem.imageRes)
+                }
+                ActiveSlot.BOTTOM -> {
+                    slotBottomRes = aiSuggestedItem.imageRes
+                    findViewById<ImageView>(R.id.ivSlotBottom).setImageResource(aiSuggestedItem.imageRes)
+                }
+                ActiveSlot.SHOES -> {
+                    slotShoesRes = aiSuggestedItem.imageRes
+                    findViewById<ImageView>(R.id.ivSlotShoes).setImageResource(aiSuggestedItem.imageRes)
+                }
+                ActiveSlot.ACCESSORIES -> {
+                    slotAccessoriesRes = aiSuggestedItem.imageRes
+                    val iv = findViewById<ImageView>(R.id.ivSlotAccessories)
+                    iv.setImageResource(aiSuggestedItem.imageRes)
+                    iv.visibility = View.VISIBLE
+                    findViewById<View>(R.id.layoutAccessoriesEmpty).visibility = View.GONE
+                }
+            }
+
+            // Optionally set this slot as active so the closet grid below shows the category
+            setActiveSlot(slot)
+            applySlotFilter(slot)
+
+            Toast.makeText(this, "AI suggestion applied!", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(this, "No items available in closet for this slot.", Toast.LENGTH_SHORT).show()
         }
     }
 

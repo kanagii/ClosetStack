@@ -191,6 +191,18 @@
                                 android:background="@drawable/bg_slot_active"
                                 android:visibility="visible" />
 
+                            <ImageView
+                                android:id="@+id/btnAiSuggestTop"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_gravity="top|end"
+                                android:layout_margin="6dp"
+                                android:background="@drawable/bg_icon_circle"
+                                android:padding="6dp"
+                                android:src="@drawable/ic_star_small"
+                                app:tint="#121212"
+                                android:contentDescription="AI Suggestion" />
+
                         </FrameLayout>
                     </androidx.cardview.widget.CardView>
 
@@ -247,6 +259,18 @@
                                 android:background="@drawable/bg_slot_active"
                                 android:visibility="gone" />
 
+                            <ImageView
+                                android:id="@+id/btnAiSuggestAccessories"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_gravity="top|end"
+                                android:layout_margin="6dp"
+                                android:background="@drawable/bg_icon_circle"
+                                android:padding="6dp"
+                                android:src="@drawable/ic_star_small"
+                                app:tint="#121212"
+                                android:contentDescription="AI Suggestion" />
+
                         </FrameLayout>
                     </androidx.cardview.widget.CardView>
 
@@ -299,6 +323,18 @@
                                 android:background="@drawable/bg_slot_active"
                                 android:visibility="gone" />
 
+                            <ImageView
+                                android:id="@+id/btnAiSuggestBottom"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_gravity="top|end"
+                                android:layout_margin="6dp"
+                                android:background="@drawable/bg_icon_circle"
+                                android:padding="6dp"
+                                android:src="@drawable/ic_star_small"
+                                app:tint="#121212"
+                                android:contentDescription="AI Suggestion" />
+
                         </FrameLayout>
                     </androidx.cardview.widget.CardView>
 
@@ -340,6 +376,18 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/bg_slot_active"
                                 android:visibility="gone" />
+
+                            <ImageView
+                                android:id="@+id/btnAiSuggestShoes"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_gravity="top|end"
+                                android:layout_margin="6dp"
+                                android:background="@drawable/bg_icon_circle"
+                                android:padding="6dp"
+                                android:src="@drawable/ic_star_small"
+                                app:tint="#121212"
+                                android:contentDescription="AI Suggestion" />
 
                         </FrameLayout>
                     </androidx.cardview.widget.CardView>
